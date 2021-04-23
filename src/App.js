@@ -10,6 +10,8 @@ import {
   Route
 } from "react-router-dom";
 import Home from './Pages/Home/home';
+import Profile from './Pages/Profile/profile';
+import SingleExp from './Pages/SingleExperience/singleExperience'
 // import Signup from './components/signup/signup';
 // import Login from './components/LogIn/login';
 // import FindById from './components/findbyId/findbyId';
@@ -22,6 +24,8 @@ function App() {
       <Router>
         <Switch>
           <Route path="/"  exact component={Home} />
+          <Route path="/account/user"   component={Profile} />
+          <Route path="/experience/user/"   component={SingleExp} />
           {/* <Route path="/signin" component={Signup} />
           <Route path="/login" component={Login} />       
           <Route path="/findbyid/" component={FindById} />       

@@ -22,6 +22,7 @@ const navbar = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto m-auto nav-bar">
                         <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/account/user">My ACCOUNT</Nav.Link>
                         <Nav.Link href="/signin">SignUp</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
                         </Nav>

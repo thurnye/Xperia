@@ -1,17 +1,20 @@
-.destination{
+.destination .row{
     text-align: center;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 }
 .destination .destination-list{
     margin-bottom:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 30px;
 }
 
 .destination .explore{
     border: 1px solid #c6c6c6;
-    width: 180px;
+    width: 150px;
 }
 .destination .explore:hover{
     background-color: black;

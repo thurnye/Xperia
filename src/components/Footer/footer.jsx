@@ -6,7 +6,7 @@ const footer = () => {
         <React.Fragment>
             <div className="footer-elements row">
                 <div className="col-md-4 "> 
-                    <div className="container">
+                    <div className="container component">
                         GoogleMap
                     </div>
                     

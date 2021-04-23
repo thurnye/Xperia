@@ -7,10 +7,11 @@ const destination = () => {
         <div className="container destination">
             <div className="row">
                 <div class="col-md-4 destination-list">
-                    <div class="card" style={{width: '18rem'}}>
+                    <div class="card" style={{width: '16rem'}}>
                         <img src={PeruImg} class="card-img-top" alt="..."/>
                         <div class="card-body">
                             <h5 class="card-title">country name</h5>
+                            <div className="countryMap component">....map of the country goes here</div>
                             <p class="card-text">what they are known for</p>
                             <a href="#" class="btn explore">EXPLORE</a>
                         </div>
@@ -18,10 +19,11 @@ const destination = () => {
                 </div>
 
                 <div class="col-md-4 destination-list">
-                    <div class="card" style={{width: '18rem'}}>
+                    <div class="card" style={{width: '16rem'}}>
                         <img src={PeruImg} class="card-img-top" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">country name</h5>
+                        <div className="countryMap component">....map of the country goes here</div>
                         <p class="card-text">what they are known for</p>
                         <a href="#" class="btn explore">EXPLORE</a>
                     </div>
@@ -29,10 +31,11 @@ const destination = () => {
                 </div>
 
                 <div class="col-md-4 destination-list">
-                    <div class="card" style={{width: '18rem'}}>
+                    <div class="card" style={{width: '16rem'}}>
                     <img src={PeruImg} class="card-img-top" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">country name</h5>
+                        <div className="countryMap component">....map of the country goes here</div>
                         <p class="card-text">what they are known for</p>
                         <a href="#" class="btn explore">EXPLORE</a>
                     </div>
