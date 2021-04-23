@@ -1,0 +1,12 @@
+.footer-elements{
+    /* display: flex; */
+    margin-top: 7vh;
+}
+
+.follow-up{
+    /* border: 2px dotted red; */
+}
+.media-icon{
+    padding: 42px;
+    padding-top: initial;
+}

@@ -1,0 +1,18 @@
+.essentials{
+    background-color: #f7f2ee;
+    text-align: center;
+}
+.essentials h5{
+    padding-top: 30px;
+}
+
+.essentials .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.essentials .essentials-items{
+    background-color: #f7f2ee;
+}
