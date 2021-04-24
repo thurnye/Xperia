@@ -4,25 +4,23 @@ const {Schema} = mongoose
 
 const userSchema = new Schema({
     
-    FirstName: {
+  FirstName: {
     type: Schema.Types.String,
-    },
-    LastName: {
+  },
+  UserName: {
     type: Schema.Types.String,
-    },
-    Address: {
-    type: Schema.Types.String,
-    },
-    Number: {
+  },
+  Password: {
     type: Schema.Types.Number,
-    },
-    Email: {
+  },
+  Email: {
     type: Schema.Types.String,
-    }
-},
-   
-{
-  timestamps: true
-});
+  }
+  },
+    
+  {
+    timestamps: true
+  }
+);
 
 module.exports = mongoose.model('User', userSchema);

@@ -313,19 +313,23 @@ const userXperience = () => {
 
           
         </div>
-        {/* This is for adding new experience */}
+       
+       
+       
+       {/* This is for adding new experience */}
         <div class="item card">
           <img src="#"   style= {{width: "250px"}}alt=""/>
           <div class="place">
             <div className="preview-info">
-              <Link to= '/experience/create'>NEw</Link>
-              {/* <Link to={{pathname: `/experience/user/create`}} className="btn"> 
+              <Link to={{pathname: `/experience/create`}} className="btn"> 
               <p><small className="text-mute"><i>Form Element</i></small></p>
               <h5><small className="text-mute">Form</small></h5>
-            </Link> */}
+            </Link>
             </div>
           </div>
         </div>
+
+        
         <div className="foot components">
           <p className="mb-0">© 2021 Tamunotonye Daniel, All Rights Reserved</p>
         </div>

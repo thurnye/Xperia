@@ -1,0 +1,9 @@
+.newExp textarea.form-control {
+    height: 400px;
+}
+
+.input-group-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
