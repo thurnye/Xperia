@@ -1,0 +1,9 @@
+.media-icon{
+    /* padding: 42px; */
+    padding-top: initial;
+}
+.follow-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

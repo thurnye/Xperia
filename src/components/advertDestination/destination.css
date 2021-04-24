@@ -12,11 +12,11 @@
     margin-top: 30px;
 }
 
-.destination .explore{
+ .explore{
     border: 1px solid #c6c6c6;
     width: 150px;
 }
-.destination .explore:hover{
+.explore:hover{
     background-color: black;
     color: white
 }

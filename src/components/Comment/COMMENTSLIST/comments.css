@@ -1,0 +1,31 @@
+.comment-list{
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    text-align: start;
+}
+
+
+.comments{
+    text-align: start;
+}
+.comments-items{
+    margin-bottom: 15px;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.col-md-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comment-img{
+    margin-top: 5px;
+    
+}
+.comments-items .comment-date{
+    color: salmon;
+}

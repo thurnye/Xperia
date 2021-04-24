@@ -1,0 +1,40 @@
+.expInfo{
+    /* border: 2px dotted red; */
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.expInfo-img{
+    text-align: center;
+    margin-bottom: 7vh;
+}
+.googleMapOfLocation{
+    border: 2px dotted yellowgreen;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 7vh;
+}
+.expoInfo-media .col-md-4{
+    max-width: 100%;
+}
+.expoInfo-media {
+    margin-bottom: 7vh;
+}
+
+.sales{
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 7vh;
+}
+.expInfo h6{
+   text-align: center; 
+   border-bottom: 1px solid #ced4da;; 
+   line-height: 0.1em;
+   margin: 10px 0 20px; 
+}
+h6 span{
+    background:#fff; 
+    padding:0 10px; 
+}

@@ -2,11 +2,13 @@
     /* display: flex; */
     margin-top: 7vh;
 }
-
-.follow-up{
-    /* border: 2px dotted red; */
-}
-.media-icon{
-    padding: 42px;
-    padding-top: initial;
-}
+.footer-elements h6{
+    text-align: center; 
+    border-bottom: 1px solid #ced4da;; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ }
+ .footer-elements h6 span{
+     background:#fff; 
+     padding:0 10px; 
+ }

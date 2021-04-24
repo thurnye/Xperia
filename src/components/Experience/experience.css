@@ -1,0 +1,20 @@
+.experience{
+    /* border: 2px dotted red; */
+    text-align: center;
+}
+.experience .experience-text {
+    text-align: start;
+}
+.exp-img{
+    text-align: center;
+}
+.experience-created{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.experience .user-experience{
+    display:flex;
+    margin-top: 15vh;
+
+}

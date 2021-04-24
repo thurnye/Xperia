@@ -295,8 +295,7 @@ const userXperience = () => {
                   <p><small className="text-mute"><i>Marano di Napoli</i></small></p>
                   <h5><small className="text-mute">Italy</small></h5>
               </Link>
-              </div>
-              
+              </div>   
           </div>
           </div>
           <div class="item card">
@@ -309,7 +308,22 @@ const userXperience = () => {
               </Link>
               </div>
               
+            </div>
           </div>
+
+          
+        </div>
+        {/* This is for adding new experience */}
+        <div class="item card">
+          <img src="#"   style= {{width: "250px"}}alt=""/>
+          <div class="place">
+            <div className="preview-info">
+              <Link to= '/experience/create'>NEw</Link>
+              {/* <Link to={{pathname: `/experience/user/create`}} className="btn"> 
+              <p><small className="text-mute"><i>Form Element</i></small></p>
+              <h5><small className="text-mute">Form</small></h5>
+            </Link> */}
+            </div>
           </div>
         </div>
         <div className="foot components">
