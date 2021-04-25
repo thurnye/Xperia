@@ -10,10 +10,9 @@ import './signup.css';
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      address: '',
-      number: '',
+      name: '',
+      userName: '',
+      password: '',
       email: '',
     };
 
@@ -30,9 +29,9 @@ import './signup.css';
   onSubmit(e) {
     e.preventDefault();
     const newUser = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      address: this.state.address,
+      name: this.state.name,
+      userName: this.state.userName,
+      password: this.state.password,
       number: this.state.number,
       email: this.state.email,
       }
@@ -42,9 +41,9 @@ import './signup.css';
       this.props.history.push(`/`)
        // this.setState({
       //   // id: response.newUser.id,
-      //   firstName: response.newUser.firstName,
-      //   lastName: response.newUser.lastName,
-      //   address: response.newUser.address,
+      //   name: response.newUser.name,
+      //   userName: response.newUser.userName,
+      //   password: response.newUser.password,
       //   number: response.newUser.number,
       //   email: response.newUser.email,
       // });
@@ -59,10 +58,9 @@ import './signup.css';
     newUser() {
       this.setState({
           id: null,
-          firstName: '',
-          lastName: '',
-          address: '',
-          number: '',
+          name: '',
+          userName: '',
+          password: '',
           email: '',
         
       });
@@ -76,7 +74,7 @@ import './signup.css';
             <div className="sign-up">
               <div className="card" style= {{width: "30rem"}} >
                 <div className="card-header">
-                  <h5 className="card-firstName"> I WANT a cook</h5>
+                  <h5 className="card-name"> Register to Share Your Experience</h5>
                   <hr></hr>
                 </div>
                 <div className="card-body">
@@ -88,7 +86,7 @@ import './signup.css';
                         <label  className="col-sm-3 col-form-label">First Name</label>
                         <div className="col-sm-9
                         ">
-                          <input name="firstName" type="text" className="form-control" id="inputFirstName" value={this.state.firstName} onChange={this.onChange}/>
+                          <input name="name" type="text" className="form-control" id="inputname" value={this.state.name} onChange={this.onChange}/>
                         </div>
                       </div>
 
@@ -97,25 +95,16 @@ import './signup.css';
                         <label  className="col-sm-3 col-form-label">Last Name</label>
                         <div className="col-sm-9
                         ">
-                          <input name="lastName" type="text" className="form-control" id="inputlastName" value={this.state.lastName} onChange={this.onChange}/>
+                          <input name="userName" type="text" className="form-control" id="inputuserName" value={this.state.userName} onChange={this.onChange}/>
                         </div>
                       </div>
 
-                      {/* Address */}
+                      {/* password */}
                       <div className="form-group row">
-                        <label  className="col-sm-3 col-form-label">Address</label>
+                        <label  className="col-sm-3 col-form-label">password</label>
                         <div className="col-sm-9
                         ">
-                        <textarea name="address" className="form-control" id="inputAddress" rows="3" value={this.state.address} onChange={this.onChange}></textarea>
-                        </div>
-                      </div>
-
-                      {/* Number */}
-                      <div className="form-group row">
-                        <label  className="col-sm-3 col-form-label">Phone No.</label>
-                        <div className="col-sm-9
-                        ">
-                          <input name="number" className="form-control" id="inputNumber" value={this.state.number} onChange={this.onChange}/>
+                        <textarea name="password" className="form-control" id="inputpassword" rows="3" value={this.state.password} onChange={this.onChange}></textarea>
                         </div>
                       </div>
 
@@ -131,7 +120,7 @@ import './signup.css';
                     </div>
 
                     <div className="getCook">  
-                      <button type="submit" className="btn">Let's get my Cook</button>
+                      <button type="submit" className="btn">Sign Up</button>
                     </div>
                   </form>
 

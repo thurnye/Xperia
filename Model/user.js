@@ -4,18 +4,26 @@ const {Schema} = mongoose
 
 const userSchema = new Schema({
     
-  FirstName: {
+  name: {
     type: Schema.Types.String,
   },
-  UserName: {
+  userName: {
     type: Schema.Types.String,
   },
-  Password: {
+  password: {
     type: Schema.Types.Number,
   },
-  Email: {
+  email: {
     type: Schema.Types.String,
-  }
+  },
+  experience: [
+    {
+      trip: {
+        type: Schema.Types.ObjectId,
+        ref: 'Experiences',
+      }
+    }
+  ]
   },
     
   {
