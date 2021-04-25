@@ -16,7 +16,7 @@ const experiencesSchema = new Schema({
         type: String,
         require: true
     },
-    categories: [{
+    tags: [{
         imgUrl: {
             type: Object, required: true
         }

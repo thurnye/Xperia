@@ -2,8 +2,13 @@ import http from './http-commons';
 
 class StuffDataService {
 
+  // create new user
   create(data) {
     return http.post("/api", data);
+  }
+  // create experience
+  createExperience(data) {
+    return http.post("/api/experience", data);
   }
   find() {
     return http.get("/");

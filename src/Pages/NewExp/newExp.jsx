@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
 import NavBar from '../../components/Nav/navbar';
 import './newExp.css'
+import services from '../../components/util/services'
 
 class newExp extends Component {
     state = {
-        
+        title: '',
+        city: '',
+        country: '',
+        tags: [],
+        images: [],
     };
   
   
     onChange = (e) => {
-        // this.setState({ [e.target.name]: e.target.value });
-        console.log([e.target.name], e.target.value )
+        this.setState({ [e.target.name]: e.target.value });
+        // console.log([e.target.name], e.target.value )
     }
       
-    onSubmit = async () => {
-         
+    onSubmit = async (e) => {
+        e.preventDefault();
+        const newExp = {
+            userId: this.props.userId,
+            title: this.state.title,
+            city: this.state.city,
+            country: this.state.country,
+            tags: [],
+            images: []
+        }
+        console.log(newExp)
+        services.createExperience(newExp)
+        .then(res => {
+          console.log(res)
+        //   this.props.history.push(`/`)
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
 
     render() {

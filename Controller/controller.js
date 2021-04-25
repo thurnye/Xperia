@@ -1,5 +1,6 @@
 //this is the server controller where i do send data to the back end....
 const User = require('../Model/user')
+const jwt = require('jsonwebtoken');
 
 
 
@@ -12,19 +13,59 @@ const postCreateUser = async (req, res, next) => {
     //CREATE USER
     const newUser = new User ({
         // id: req.body.id,
-        FirstName: req.body.firstName,
-        LastName: req.body.lastName,
-        Address: req.body.address,
-        Number: req.body.number,
-        Email: req.body.email,
+        name: req.body.name,
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
     })
+    console.log(newUser)
     // //SAVE USER IN THE DB
     newUser.save()
-    .then(result => {
+    .then(user => {
+        const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
         // send a response to the front end
-        res.status(200).json(result)
+        res.status(200).json(token)
     })
     .catch(err => res.status(400).json(err))
+        
+}
+
+//Creating A User Experience
+const postCreateUserExperience = async (req, res, next) => {
+    const userId = req.body.userId
+    const newExp = {
+        title: req.body.title,
+        city: req.body.city,
+        country: req.body.country,
+        tags: req.body.tags,
+        story: req.body.story,
+        images:req.body.images
+
+    }
+    User.findById(userId)
+    .then(user => {
+        console.log(newExp)
+        user.experience.push(newExp)
+        user.save().then((result) => {
+            console.log(result)
+        })
+    })
+    
+    // console.log(req.body)
+    //CREATE USER EXPERIENCE
+    // User.experience.push(req.body)
+    // User.save((err)=>{
+    //     console.log(err)
+    // })
+    
+    // console.log(newUser)
+    // // //SAVE USER IN THE DB
+    // newUser.save()
+    // .then(result => {
+    //     // send a response to the front end
+    //     res.status(200).json(result)
+    // })
+    // .catch(err => res.status(400).json(err))
         
 }
 
@@ -64,10 +105,10 @@ const postEdit = (req, res, next) => {
     const id = req.body.id;
     User.findById(id)
     .then(user => {
-        user.FirstName = req.body.firstName;
-        user.LastName = req.body.lastName;
-        user.Address = req.body.address;
-        user.Number = req.body.number;
+        user.name = req.body.name;
+        user.username = req.body.username;
+        user.email = req.body.email;
+        user.password = req.body.password;
         user.Email = req.body.email;
         return user.save()
     })
@@ -92,6 +133,7 @@ const postDelete = async (req, res, next) => {
 
 module.exports = {
     postCreateUser,
+    postCreateUserExperience,
     getHompage,
     getAUserByID,
     getEdit,

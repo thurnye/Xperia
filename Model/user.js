@@ -10,11 +10,11 @@ const userSchema = new Schema({
   userName: {
     type: Schema.Types.String,
   },
-  password: {
-    type: Schema.Types.Number,
-  },
   email: {
     type: Schema.Types.String,
+  },
+  password: {
+    type: Schema.Types.Number,
   },
   experience: [
     {

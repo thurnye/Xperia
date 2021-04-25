@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import services from '../util/services'
 import NavBar from '../Nav/navbar';
+import jwt_decode from "jwt-decode";
 import './signup.css';
 
 
@@ -32,24 +33,19 @@ import './signup.css';
       name: this.state.name,
       userName: this.state.userName,
       password: this.state.password,
-      number: this.state.number,
       email: this.state.email,
       }
-    services.create(newUser)
-    .then(res => {
-      console.log(res)
-      this.props.history.push(`/`)
-       // this.setState({
-      //   // id: response.newUser.id,
-      //   name: response.newUser.name,
-      //   userName: response.newUser.userName,
-      //   password: response.newUser.password,
-      //   number: response.newUser.number,
-      //   email: response.newUser.email,
-      // });
-      // console.log(response.newUser);
-
-    })
+      // console.log(newUser)
+      services.create(newUser)
+      .then(res => {
+        let token = res.data
+        console.log(token)
+        localStorage.setItem('token', token);  
+        const userDoc = jwt_decode(token); 
+        this.props.setUserInState(userDoc.user)
+        console.log(userDoc.user)
+        // this.props.history.push(`/`)
+     })
     .catch(e => {
       console.log(e);
     });
@@ -83,7 +79,7 @@ import './signup.css';
                       
                       {/* First Name */}
                       <div className="form-group row">
-                        <label  className="col-sm-3 col-form-label">First Name</label>
+                        <label  className="col-sm-3 col-form-label"> Name</label>
                         <div className="col-sm-9
                         ">
                           <input name="name" type="text" className="form-control" id="inputname" value={this.state.name} onChange={this.onChange}/>
@@ -92,7 +88,7 @@ import './signup.css';
 
                       {/* Last Name */}
                       <div className="form-group row">
-                        <label  className="col-sm-3 col-form-label">Last Name</label>
+                        <label  className="col-sm-3 col-form-label"> Choose a Username</label>
                         <div className="col-sm-9
                         ">
                           <input name="userName" type="text" className="form-control" id="inputuserName" value={this.state.userName} onChange={this.onChange}/>
@@ -104,7 +100,7 @@ import './signup.css';
                         <label  className="col-sm-3 col-form-label">password</label>
                         <div className="col-sm-9
                         ">
-                        <textarea name="password" className="form-control" id="inputpassword" rows="3" value={this.state.password} onChange={this.onChange}></textarea>
+                        <input type='password' name="password" className="form-control" id="inputpassword" value={this.state.password} onChange={this.onChange}></input>
                         </div>
                       </div>
 
