@@ -42,7 +42,7 @@ class newExp extends Component {
     render() {
         return (
             <React.Fragment>
-                <NavBar />
+                {/* <NavBar /> */}
                 <div className="container newExp"> 
             
                     <form noValidate onSubmit={this.onSubmit}>

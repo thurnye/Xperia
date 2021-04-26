@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import services from '../util/services'
-import NavBar from '../Nav/navbar';
+import services from '../../components/util/services'
+import NavBar from '../../components/Nav/navbar';
 import jwt_decode from "jwt-decode";
 import './signup.css';
 
@@ -65,7 +65,7 @@ import './signup.css';
    render() { 
      return (
         <React.Fragment>
-          <NavBar/>
+          {/* <NavBar/> */}
           <section className="guest">
             <div className="sign-up">
               <div className="card" style= {{width: "30rem"}} >

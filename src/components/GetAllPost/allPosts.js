@@ -13,7 +13,7 @@ export default class displayUsers extends Component {
         //DISPLAY ALL Posts
         services.find()
         .then(result => {
-            console.log(result)
+            // console.log(result)
             this.setState({
                 data: result.data.posts
             })

@@ -19,11 +19,18 @@ class StuffDataService {
     return http.get("/");
   }
 
+// this retrieves a single post
   findById(id) {
     return http.get(`/api/${id}`);
   }
-  findComments(id) {
-    return http.get(`/api/comment/${id}`);
+
+  // this retrieves a user
+  findMyAccount(id) {
+    return http.get(`/api/user/${id}`);
+  }
+
+  postLogin(data) {
+    return http.post(`/api/user/login`, data);
   }
   
   findOne(id) {

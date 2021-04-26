@@ -14,21 +14,21 @@ class singlePost extends Component {
 
     state = {
         post: [],
+        author: []
     } 
 
     componentDidMount() {
         // const authorID = ''the ExpInfo will get the author Id
         const postID = this.props.location.state
-        
-
         // Get Single Post
         services.findById(postID)
         .then(result => {
             // console.log(result)
             this.setState({
                 post: result.data.post,
+                author: result.data.author
             })
-            // console.log(this.state.post)
+            // console.log(this.state.post.author)
         })
         .catch( err=> console.log(err))
     }
@@ -38,17 +38,17 @@ class singlePost extends Component {
     render () {
         return (
             <React.Fragment>
-                <NavBar/>
+                {/* <NavBar/> */}
                 <h2>Xperia</h2>
                 <p><small className="text-mute">User Slogan</small></p>
                 <div className="container">
-                <div class=" mb-3" >
-                    <div class="row">
-                        <div class="col-md-8 container ">
-                            <Experience  post={this.state.post}/>
+                <div className=" mb-3" >
+                    <div className="row">
+                        <div className="col-md-8 container ">
+                            <Experience  post={this.state.post} author={this.state.author}/>
                         </div>
-                        <div class="col-md-4 ">
-                            <ExpInfo comments={this.state.post}/>
+                        <div className="col-md-4 ">
+                            <ExpInfo author={this.state.author}/>
                         </div>
                     </div>
                 </div>

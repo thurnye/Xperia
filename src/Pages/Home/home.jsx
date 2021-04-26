@@ -14,7 +14,7 @@ const home = () => {
     return (
         <React.Fragment>
             HOME PAGE
-            <NavBar/>
+            {/* <NavBar/> */}
         <div className="component">
             carousel
            

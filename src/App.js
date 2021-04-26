@@ -9,15 +9,15 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import NavBar from './components/Nav/navbar'
 import Home from './Pages/Home/home';
 import Profile from './Pages/MyAccount/myAccount';
 import Author from './Pages/AuthorPage/author';
 import SingleExp from './Pages/SinglePost/singlePost'
 import NewExp from './Pages/NewExp/newExp'
 import Posts from './Pages/Result/result'
-import Signup from './components/signup/signup';
-import { render } from '@testing-library/react';
-// import Login from './components/LogIn/login';
+import Signup from './Pages/Signup/signup';
+import Login from './Pages/LogIn/login';
 // import FindById from './components/findbyId/findbyId';
 // import Edit from './components/Update/edit'
 
@@ -25,8 +25,6 @@ import { render } from '@testing-library/react';
 class App extends Component {
   state = {
     user:null,
-    // these are just test datas
-    
     _id : '60861b7746965b0d1e9c7de0', //the dummy user id
   }
   
@@ -47,6 +45,7 @@ class App extends Component {
 render() {
   return (
     <React.Fragment>
+      <NavBar />
       <Router>
         <Switch>
           <Route path="/"  exact component={Home} />
@@ -54,6 +53,9 @@ render() {
 
           <Route path="/register" render={() => (
               <Signup setUserInState={this.setUserInState}/>
+            )}/>
+          <Route path="/account/login" render={() => (
+              <Login setUserInState={this.setUserInState}/>
             )}/>
 
           <Route path="/posts" render={() => (

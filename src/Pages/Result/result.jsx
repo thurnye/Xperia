@@ -10,7 +10,7 @@ export default class profile extends Component {
     render () {
         return (
             <React.Fragment>
-                <NavBar/>
+                {/* <NavBar/> */}
                 
                 All Posts
                 <Posts />

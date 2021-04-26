@@ -17,29 +17,30 @@ export default class profile extends Component {
  
     //RETRIEVING A PARTICULAR USER
     componentDidMount() {
-        const id = this.props.location.state
-       services.findById(id)
-        .then(user => {
-            this.setState({
-                data: user.data.data
+        const id = this.props.location.state  //this should be gotten from the App Js where we store in the logged in User
+        services.findMyAccount(id)
+            .then(user => {
+                console.log(user)
+                // this.setState({
+                //     data: user.data.data
+                // })
             })
-        })
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
     }
     
     //DELETE A USER
     deleteUser = async() => {
         const id = this.props.location.state;
-       await services.remove(id)
-       .then(result => {
-            // this.props.history.push('/')
-        })
-        .catch(err=> console.log(err))
+        await services.remove(id)
+        .then(result => {
+                // this.props.history.push('/')
+            })
+            .catch(err=> console.log(err))
     }
     render () {
         return (
             <React.Fragment>
-                <NavBar/>
+                {/* <NavBar/> */}
                 
                 <div className="container">
                 <div class="card mb-3" >

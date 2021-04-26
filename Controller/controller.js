@@ -10,7 +10,7 @@ const { post } = require('../Routes/routes');
 
 
 
-//Creating A User
+//SignUp A User
 const postCreateUser = async (req, res, next) => {
     //get the info from the front-end and send to the db
     //CREATE USER
@@ -32,6 +32,21 @@ const postCreateUser = async (req, res, next) => {
     .catch(err => res.status(400).json(err))
         
 }
+// Login a User
+const getLogIn = async (req, res) => {
+    try {
+        console.log(req.body)
+    //   const user = await User.findOne({ email: req.body.email });
+    //       // check password. if it's bad throw an error.
+    //       if (!(await bcrypt.compare(req.body.password, user.password))) throw new Error();
+  
+    //   // if we got to this line, password is ok. give user a new token.
+    //   const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
+    //   res.json(token)
+    } catch {
+      res.status(400).json('Bad Credentials');
+    }
+  }
 
 //Creating A User Experience
 const postCreateUserExperience = async (req, res, next) => {
@@ -111,6 +126,7 @@ const getPostsPage = async(req, res, next) => {
 //RETRIVE A Post BY ID
 const getAPostByID = (req, res, next) => {
     const postId = req.params.id;
+    const author = [];
     // console.log(postId)
     Post.findById(postId)
     .populate({
@@ -118,12 +134,42 @@ const getAPostByID = (req, res, next) => {
         populate: ({ 
             path: 'userId',
             populate: {path: 'post'}
-        })
+        }),
+        // path: 'author'
     })
     .exec()
     .then(post => {
+        // console.log(post.author)
+        User.findById(post.author)
+        .populate({
+            path: 'post.trip',
+            populate:({
+                path: 'comments.comment',
+                populate: ({ 
+                    path: 'userId',
+                    populate: {path: 'post'}
+                }) 
+            })
+        })
+        .then(author => {
+            console.log(author)
+            res.send({author, post})
+        })
+
+    })
+    .catch(err => res.status(400).json(err))
+}
+
+// //RETRIVE A user BY ID
+const getUserByID = (req, res, next) => {
+    const authorId = req.params.id;
+    console.log(authorId)
+    User.findById(authorId)
+    .populate()
+    .exec()
+    .then(post => {
         console.log(post)
-        res.send({post})
+        // res.send({post})
     })
     .catch(err => res.status(400).json(err))
 }
@@ -187,10 +233,12 @@ const postDelete = async (req, res, next) => {
 
 module.exports = {
     postCreateUser,
+    getLogIn,
     postCreateUserExperience,
     postCreateUserExperienceomment,
     getPostsPage,
     // getACommentByID,
+    getUserByID,
     getAPostByID,
     getEdit,
     postEdit, 

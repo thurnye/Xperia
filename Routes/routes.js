@@ -13,8 +13,14 @@ router.post('/api/experience', Controller.postCreateUserExperience);
 //post new user experience comment
 router.post('/api/experience/comment', Controller.postCreateUserExperienceomment);
 
-//getting an item by id
+//getting a post by id
 router.get('/api/:id', Controller.getAPostByID);
+
+
+// POST /api/users/login
+router.post('/api/user/login', Controller.getLogIn);
+//getting a user/author by id
+// router.get('/api/user/:id', Controller.getUserByID);
 
 
 //getting an comments by id
