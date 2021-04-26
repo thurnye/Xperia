@@ -16,11 +16,12 @@ const userSchema = new Schema({
   password: {
     type: Schema.Types.Number,
   },
-  experience: [
+  // add user brief description and slogan
+  post: [
     {
       trip: {
         type: Schema.Types.ObjectId,
-        ref: 'Experiences',
+        ref: 'Posts',
       }
     }
   ]

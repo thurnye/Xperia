@@ -1,7 +1,16 @@
 import React from 'react';
-import './profileHalf.css'
+import './myInfo.css'
 import Avatar from '../Avatar/avatar' 
-const profileHalf = () => {
+
+
+
+
+
+
+
+
+
+const myInfo = () => {
     return (
         <React.Fragment>
             This is the left half of the profile
@@ -45,4 +54,4 @@ const profileHalf = () => {
     );
 }
 
-export default profileHalf;
+export default myInfo;

@@ -1,6 +1,9 @@
 //this is the server controller where i do send data to the back end....
 const User = require('../Model/user')
+const Post = require('../Model/postModel')
+const Comment = require('../Model/commentModel')
 const jwt = require('jsonwebtoken');
+const { post } = require('../Routes/routes');
 
 
 
@@ -33,7 +36,8 @@ const postCreateUser = async (req, res, next) => {
 //Creating A User Experience
 const postCreateUserExperience = async (req, res, next) => {
     const userId = req.body.userId
-    const newExp = {
+    const newPost = new Post ({
+        author : userId,
         title: req.body.title,
         city: req.body.city,
         country: req.body.country,
@@ -41,52 +45,102 @@ const postCreateUserExperience = async (req, res, next) => {
         story: req.body.story,
         images:req.body.images
 
-    }
-    User.findById(userId)
-    .then(user => {
-        console.log(newExp)
-        user.experience.push(newExp)
-        user.save().then((result) => {
-            console.log(result)
+    })
+    newPost.save().then((resp) => {
+        // console.log(result)
+        const postId = {trip: resp._id}
+        User.findById(userId)
+        .then(user => {
+            // push the id into the user post array
+            user.post.push(postId)
+            user.save()
+            .then(result => {
+                // res.status(200).json(result)
+                console.log(result)
+
+            })
         })
     })
-    
-    // console.log(req.body)
-    //CREATE USER EXPERIENCE
-    // User.experience.push(req.body)
-    // User.save((err)=>{
-    //     console.log(err)
-    // })
-    
-    // console.log(newUser)
-    // // //SAVE USER IN THE DB
-    // newUser.save()
-    // .then(result => {
-    //     // send a response to the front end
-    //     res.status(200).json(result)
-    // })
-    // .catch(err => res.status(400).json(err))
+    .catch(err => res.status(400).json(err))
+        
+}
+//Creating A Post Comments
+const postCreateUserExperienceomment = async (req, res, next) => {
+    const postId = req.body.postId     //this is coming from the front end
+    const loggedInUserId = '60861b7746965b0d1e9c7de0'  //this is a dummy logged in user id
+    const newComment = new Comment ({
+        comment: req.body.comment,
+        userId: loggedInUserId,
+        postId: postId
+    })
+    console.log(postId)
+    console.log(newComment)
+    newComment.save()
+    .then(resp => {
+        const commentId = {comment:resp._id}
+        // find the Post or Trip
+        Post.findById(postId)
+        .then(post => {
+            // Push the comment into the right post
+            const comments = post.comments
+            comments.push(commentId)
+                post.save().then(result => {
+                    console.log(result)
+                    res.status(200).json(result)
+                })
+            
+        })
+    })
+    .catch(err => console.log(err))
         
 }
 
-//RETRIVE ALL USER
-const getHompage = async(req, res, next) => {
-    await User.find().then(users => {
-        res.send({users});
+//RETRIVE ALL POSTS
+const getPostsPage = async(req, res, next) => {
+    await Post.find()
+    .populate('author')
+    .exec()
+    .then(posts => {
+        console.log(posts)
+        res.send({posts});
     })
     .catch(err => res.status(400).json(err))
 }
 
 
-//RETRIVE A USER BY ID
-const getAUserByID = (req, res, next) => {
-    const id = req.params.id;
-    User.findById(id)
-    .then(data => {
-        res.send({data})
+//RETRIVE A Post BY ID
+const getAPostByID = (req, res, next) => {
+    const postId = req.params.id;
+    // console.log(postId)
+    Post.findById(postId)
+    .populate({
+        path: 'comments.comment',
+        populate: ({ 
+            path: 'userId',
+            populate: {path: 'post'}
+        })
+    })
+    .exec()
+    .then(post => {
+        console.log(post)
+        res.send({post})
     })
     .catch(err => res.status(400).json(err))
 }
+
+// //RETRIVE A Comment BY ID     //this is will give us the user that created the comment
+// const getACommentByID = (req, res, next) => {
+//     const postId = req.params.id;
+//     console.log(postId)
+//     Post.findById(postId)
+//     .populate('comments.comment')
+//     .exec()
+//     .then(post => {
+//         console.log(post)
+//         res.send({post})
+//     })
+//     .catch(err => res.status(400).json(err))
+// }
 
 
 
@@ -134,8 +188,10 @@ const postDelete = async (req, res, next) => {
 module.exports = {
     postCreateUser,
     postCreateUserExperience,
-    getHompage,
-    getAUserByID,
+    postCreateUserExperienceomment,
+    getPostsPage,
+    // getACommentByID,
+    getAPostByID,
     getEdit,
     postEdit, 
     postDelete

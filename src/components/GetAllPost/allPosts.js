@@ -10,11 +10,12 @@ export default class displayUsers extends Component {
 
     componentDidMount() {
 
-        //DISPLAY ALL USERS
+        //DISPLAY ALL Posts
         services.find()
         .then(result => {
+            console.log(result)
             this.setState({
-                data: result.data.users
+                data: result.data.posts
             })
         })
         .catch( err=> console.log(err))
@@ -23,29 +24,26 @@ export default class displayUsers extends Component {
 
 
     render() {
-       const Inventory =  this.state.data.map((el)=> {
+       const Inventory =  this.state.data.map((post)=> {
             return (
-                <div class="card" key={el._id}>
+                <div class="card" key={post._id}>
                         <img src="" class="card-img-top" alt="anImage"/>
                         <div class="card-body">
-                        <h5 class="card-title">{el.FirstName} {el.LastName}</h5>
-                        <p class="card-text">{el.Address} </p>
-                        <p class="card-text">{el.Number} </p>
-                        <p class="card-text">{el.Email} </p>
+                        <h5 class="card-title">{post.name} </h5>
+                        <p class="card-text">{post.city},{post.country} </p>
+                        <p class="card-text">{post.title} </p>
+                        <p class="card-text">{post._id}</p>
                         </div>
                         <Link to={{
-                                pathname: `/findbyid/${el._id}` ,
-                                search: `?sort=${el.FirstName}${el.LastName}`,
-                                hash: "#the-hash",
-                                state: el._id,
-                               
-                                }}
-                                className="btn badge badge-warning"> Check Me Out</Link>
+                            pathname: `/post/${post._id}` ,
+                            search: `?author=${post.author.name}`,
+                            state: `${post._id}`,
+                            hash: post.author._id,
+                        }}
+                        className="btn explore">EXPLORE </Link>
                 </div>
             )
         })
-
-
 
         return (
             <div>

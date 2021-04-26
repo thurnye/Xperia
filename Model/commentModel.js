@@ -7,12 +7,15 @@ const commentsSchema = new Schema({
         type: String,
         require: true
     },
-    users: {
-        userId: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'User'
-        }
+    userId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
+    postId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'Posts'
     },
     
 },

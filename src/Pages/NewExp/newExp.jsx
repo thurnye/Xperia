@@ -56,7 +56,7 @@ class newExp extends Component {
                                 name="title" 
                                 aria-label="title" 
                                 aria-describedby="basic-addon1" 
-                                value={this.state.comment} 
+                                // value={this.state.comment} 
                                 onChange={this.onChange}/>
                             </div>
 
@@ -81,7 +81,7 @@ class newExp extends Component {
                                 id="basic-url"
                                 name="country" 
                                 aria-describedby="basic-addon3" 
-                                value={this.state.comment} 
+                                // value={this.state.comment} 
                                 onChange={this.onChange}/>
                             </div>
 
@@ -166,7 +166,7 @@ class newExp extends Component {
                                 <textarea class="form-control exp-story"
                                 name="experience" 
                                 aria-label="With textarea"
-                                value={this.state.comment} 
+                                // value={this.state.comment} 
                                 onChange={this.onChange}></textarea>
                             </div>
                             <div class="input-group mb-3">

@@ -1,19 +1,36 @@
 import React, { Component } from 'react'
+import services from '../../util/services'
 import './commentForm.css'
 
 export default class Form extends Component {
     state = {
-      comment: ""
+      comment: "",
+      commenterInfo: '',
     };
 
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+      this.setState({ [e.target.name]: e.target.value });
     }
     
-    onSubmit = async () => {
-       
+    onSubmit = async (e) => {
+      e.preventDefault();
+      console.log(this.props.location)
+      const newExp = {
+        postId : this.props.data._id, 
+        // loggedInUserId: ........... this is needed at the back end 
+        comment: this.state.comment,
       }
+      console.log(newExp)
+      services.createExperienceComment(newExp)
+      .then(res => {
+        console.log(res)
+      //   this.props.history.push(`/`)
+      })
+      .catch(e => {
+        console.log(e);
+      });  
+    }
 
     render() {
       return(

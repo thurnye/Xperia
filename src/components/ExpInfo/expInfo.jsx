@@ -5,6 +5,7 @@ import sales from '../../Public/Image/sales.jpeg'
 import './expInfo.css'
 
 
+// get the author info here
 
 const expInfo = () => {
     return (

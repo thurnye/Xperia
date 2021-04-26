@@ -10,9 +10,11 @@ import {
   Route
 } from "react-router-dom";
 import Home from './Pages/Home/home';
-import Profile from './Pages/Profile/profile';
-import SingleExp from './Pages/SingleExperience/singleExperience'
+import Profile from './Pages/MyAccount/myAccount';
+import Author from './Pages/AuthorPage/author';
+import SingleExp from './Pages/SinglePost/singlePost'
 import NewExp from './Pages/NewExp/newExp'
+import Posts from './Pages/Result/result'
 import Signup from './components/signup/signup';
 import { render } from '@testing-library/react';
 // import Login from './components/LogIn/login';
@@ -23,7 +25,9 @@ import { render } from '@testing-library/react';
 class App extends Component {
   state = {
     user:null,
-    _id : '6084d6f8757359cfec1aa6f6'
+    // these are just test datas
+    
+    _id : '60861b7746965b0d1e9c7de0', //the dummy user id
   }
   
   setUserInState = (incomingUserData) => {
@@ -51,13 +55,22 @@ render() {
           <Route path="/register" render={() => (
               <Signup setUserInState={this.setUserInState}/>
             )}/>
-          <Route path="/account/user" render={(props) => (
-              <Profile {...props}/>
+
+          <Route path="/posts" render={() => (
+              <Posts setUserInState={this.setUserInState}/>
+            )}/>
+          <Route path="/myaccount" render={(props) => (
+              <Profile {...props} userId={this.state._id} />
+            )}/>
+
+          <Route path="/account/author" render={(props) => (
+              <Author {...props} userId={this.state._id} />
             )}/>
           <Route path="/experience/create" render={(props) => (
               <NewExp {...props} userId={this.state._id}/>
             )}/>
-          <Route path="/experience/user/" render={(props) => (
+
+          <Route path="/post" render={(props) => (
               <SingleExp {...props}/>
             )}/>
 

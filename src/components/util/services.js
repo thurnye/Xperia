@@ -10,12 +10,20 @@ class StuffDataService {
   createExperience(data) {
     return http.post("/api/experience", data);
   }
+  // create experience comments
+  createExperienceComment(data) {
+    return http.post("/api/experience/comment", data);
+  }
+  // get all posts
   find() {
     return http.get("/");
   }
 
   findById(id) {
     return http.get(`/api/${id}`);
+  }
+  findComments(id) {
+    return http.get(`/api/comment/${id}`);
   }
   
   findOne(id) {

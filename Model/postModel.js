@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 
-const experiencesSchema = new Schema({
+const postsSchema = new Schema({
     title: {
         type: String,
         require: true
@@ -30,20 +30,16 @@ const experiencesSchema = new Schema({
             type: Object, required: true
         }
     }],
-    comments: [
-        {
-          comment: {
-            type: Schema.Types.ObjectId,
-            ref: 'Comment',
-          }
+    comments: [{
+        comment: {
+        type: Schema.Types.ObjectId,
+        ref: 'Comments',
         }
-    ],
-    user: {
-        userId: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'User'
-        }
+    }],
+    author: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
 },
 {
@@ -51,4 +47,4 @@ const experiencesSchema = new Schema({
   }
 )
 
-module.exports = mongoose.model('Experiences', experiencesSchema);
+module.exports = mongoose.model('Posts', postsSchema);
