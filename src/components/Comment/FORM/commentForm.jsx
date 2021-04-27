@@ -17,15 +17,15 @@ export default class Form extends Component {
       e.preventDefault();
       console.log(this.props.location)
       const newExp = {
-        postId : this.props.data._id, 
-        // loggedInUserId: ........... this is needed at the back end 
+        postId : this.props.post._id, 
+        loggedInUserId: this.props.userId._id, 
         comment: this.state.comment,
       }
       console.log(newExp)
       services.createExperienceComment(newExp)
       .then(res => {
-        console.log(res)
-      //   this.props.history.push(`/`)
+        window.location.reload();
+      //   this.props.history.push(`/`) reload the current page
       })
       .catch(e => {
         console.log(e);

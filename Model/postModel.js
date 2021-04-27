@@ -17,18 +17,14 @@ const postsSchema = new Schema({
         require: true
     },
     tags: [{
-        imgUrl: {
-            type: Object, required: true
-        }
+        type: Object, required: true
     }],
     story: {
         type: String,
         require: true
     },
     images: [{
-        imgUrl: {
-            type: Object, required: true
-        }
+        type: Object, required: true
     }],
     comments: [{
         comment: {

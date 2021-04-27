@@ -45,7 +45,7 @@ import './signup.css';
         const userDoc = jwt_decode(token); 
         this.props.setUserInState(userDoc.user)
         console.log(userDoc.user)
-        // this.props.history.push(`/`)
+        this.props.history.push(`/`)
      })
     .catch(e => {
       console.log(e);

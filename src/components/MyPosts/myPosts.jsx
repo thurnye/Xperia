@@ -27,6 +27,7 @@ class myPost extends Component {
   
   render () {
     const myPost = this.state.myPost
+    console.log(myPost)
     return (
       <React.Fragment> 
         <div class="masonry">
@@ -41,12 +42,12 @@ class myPost extends Component {
                   <div class="place">
                     <div className="preview-info">
                        <Link to={{
-                         pathname: `/post/${el._id}`,
+                         pathname: `/post/${el.trip._id}`,
                         //  state: props.eid    //store the user experience in state
       
                         // pathname: `/post/${post._id}` ,
                         search: `?title=${this.state.user.name}`,
-                        state: `${el._id}`,
+                        state: `${el.trip._id}`,
                         hash: this.state.user._id,
       
       

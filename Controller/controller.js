@@ -72,8 +72,7 @@ const postCreatePost = async (req, res, next) => {
             user.post.push(postId)
             user.save()
             .then(result => {
-                // res.status(200).json(result)
-                console.log(result)
+                res.status(200).json(result)
 
             })
         })
@@ -85,15 +84,13 @@ const postCreatePost = async (req, res, next) => {
 
 //Creating A Post Comments
 const postCreateComment = async (req, res, next) => {
-    const postId = req.body.postId     //this is coming from the front end
-    const loggedInUserId = '60873a341fa1f75dc1ee9a4a'  //this is a dummy logged in user id
+    const postId = req.body.postId     
+    const loggedInUserId = req.body.loggedInUserId  
     const newComment = new Comment ({
         comment: req.body.comment,
         userId: loggedInUserId,
         postId: postId
     })
-    console.log(postId)
-    console.log(newComment)
     newComment.save()
     .then(resp => {
         const commentId = {comment:resp._id}
@@ -104,7 +101,6 @@ const postCreateComment = async (req, res, next) => {
             const comments = post.comments
             comments.push(commentId)
                 post.save().then(result => {
-                    console.log(result)
                     res.status(200).json(result)
                 })
             
@@ -120,7 +116,6 @@ const getPostsPage = async(req, res, next) => {
     .populate('author')
     .exec()
     .then(posts => {
-        console.log(posts)
         res.send({posts});
     })
     .catch(err => res.status(400).json(err))
@@ -130,8 +125,6 @@ const getPostsPage = async(req, res, next) => {
 //RETRIVE A Post BY ID
 const getAPostByID = (req, res, next) => {
     const postId = req.params.id;
-    const author = [];
-    // console.log(postId)
     Post.findById(postId)
     .populate({
         path: 'comments.comment',
@@ -143,7 +136,7 @@ const getAPostByID = (req, res, next) => {
     })
     .exec()
     .then(post => {
-        // console.log(post.author)
+        console.log(post)
         User.findById(post.author)
         .populate({
             path: 'post.trip',
@@ -157,7 +150,6 @@ const getAPostByID = (req, res, next) => {
         })
         .exec()
         .then(author => {
-            console.log(author)
             res.send({author, post})
         })
 

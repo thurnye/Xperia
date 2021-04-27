@@ -14,12 +14,14 @@ class singlePost extends Component {
 
     state = {
         post: [],
-        author: []
+        author: [],
+        
     } 
 
     componentDidMount() {
         // const authorID = ''the ExpInfo will get the author Id
         const postID = this.props.location.state
+        console.log(this.props.location.state)
         // Get Single Post
         services.findById(postID)
         .then(result => {
@@ -45,7 +47,7 @@ class singlePost extends Component {
                 <div className=" mb-3" >
                     <div className="row">
                         <div className="col-md-8 container ">
-                            <Experience  post={this.state.post} author={this.state.author}/>
+                            <Experience  post={this.state.post} author={this.state.author} userId={this.props.userId}/>
                         </div>
                         <div className="col-md-4 ">
                             <ExpInfo author={this.state.author}/>
@@ -66,3 +68,4 @@ class singlePost extends Component {
 }
 
 export default singlePost;
+

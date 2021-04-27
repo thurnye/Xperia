@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import './experience.css'
 import LandScape from '../../Public/Image/landscape.jpeg'
 import Avatar from '../Avatar/avatar'
@@ -9,7 +10,9 @@ import { Component } from 'react';
 
 class  experience extends Component {
     render () {
-        // console.log(this.props.post)
+        const post = this.props.post
+        const author = this.props.author
+        console.log(moment(post.createdAt).format('MMM Do YYYY'))
         return (
             <React.Fragment>
                 <div className="experience">
@@ -19,20 +22,13 @@ class  experience extends Component {
                                 <img src={LandScape} className="card-img" alt="..."/>
                             </div>
                             <div className="experience-head-content">
-                                <h5><i>City,Country</i></h5>
-                                <p>Title</p>
+                                <h5><i>{post.city}, {post.country}</i></h5>
+                                <p>{post.title}</p>
                                 <p><small className="text-mute">Category</small></p>
                             </div>
                         </div>
                         <div className="experience-text">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non voluptatibus reprehenderit soluta. Iure voluptatibus reiciendis eaque velit perferendis numquam ex alias ea nam magni, exercitationem laudantium officiis omnis maiores. Officiis quaerat necessitatibus molestias quasi quia deleniti iusto, ut laboriosam ipsum harum ex corporis inventore in quae unde vero fuga.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit autem tenetur sapiente magni sed corrupti eius tempora, ratione explicabo doloribus. Dolorum neque eum impedit illo debitis nisi, officiis in iste, ut suscipit quibusdam labore. Temporibus pariatur, consequatur ex, illum ullam ad aperiam, reprehenderit iure voluptatem deserunt explicabo nostrum sed soluta sapiente blanditiis tempora non tempore officiis! Ab quod sint dolores, voluptatem nemo corrupti, repellendus, nulla impedit quae veniam vel quo.</p>
-    
-    
-    
-                            <p><i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate repellat nam possimus voluptatibus, enim dolor inventore impedit repudiandae facere error nemo cumque tempore doloremque amet provident tenetur laborum repellendus blanditiis!</i></p>
-    
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit autem tenetur sapiente magni sed corrupti eius tempora, ratione explicabo doloribus. Dolorum neque eum impedit illo debitis nisi, officiis in iste, ut suscipit quibusdam labore. Temporibus pariatur, consequatur ex, illum ullam ad aperiam, reprehenderit iure voluptatem deserunt explicabo nostrum sed soluta sapiente blanditiis tempora non tempore officiis! Ab quod sint dolores, voluptatem nemo corrupti, repellendus, nulla impedit quae veniam vel quo.</p>
+                            <p>{post.story}</p>
                             
                             <div className="exp-img">
                                 <img src={LandScape} alt="" style={{width: "250px", margin: '10px'}}/>
@@ -45,21 +41,21 @@ class  experience extends Component {
                             
                         <hr/>
                         <div className="experience-created">
-                            <h4><small className="text-muted">Name</small></h4>
-                            <h5><small className="text-muted">April 23, 2021</small></h5>
+                            <h4><small className="text-muted">{author.name}</small></h4>
+                            <h5><small className="text-muted">{moment(post.createdAt).format('MMM Do YYYY')}</small></h5>
                         </div>
                         <hr/>
                         <div className="user-experience">
                             <Avatar author={this.props.author}/>
                             <div className="user-name">
-                            <h4><small className="text-muted">Name</small></h4>
+                            <h4><small className="text-muted">{author.name}</small></h4>
                             <h6><small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis atque mollitia nam autem excepturi soluta?</small></h6>
                             </div>
                         </div>
                         <CommentsList post={this.props.post}/>
                         <hr/>
                         
-                        <CommentForm data={this.props.post}/>
+                        <CommentForm post={this.props.post} userId={this.props.userId}/>
                     </div>
                 </div>
                 

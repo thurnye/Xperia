@@ -7,8 +7,19 @@ import './comments.css'
 
 // Retrieve all the comments
 class commentList extends Component  {
+    state = {
+        comments : this.props.post.comments
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.post.comments !== prevProps.post.comments) {
+               this.setState({
+                comments : this.props.post.comments
+               })
+        }
+        
+      }
     render () {
-        const comments = this.props.post.comments   //this contains all posts
+        const comments = this.state.comments   //this contains all posts
         // console.log(comments)
         return (
             <React.Fragment>

@@ -16,6 +16,23 @@ const userSchema = new Schema({
   password: {
     type: Schema.Types.String,
   },
+  slogan:{
+    type: Schema.Types.String,
+  },
+  aboutMe:{
+    type: Schema.Types.String,
+  },
+  socialMedia:[{
+    facebook:{type: Schema.Types.String},
+    instagram:{type: Schema.Types.String},
+    twitter:{type: Schema.Types.String},
+    pinterest:{type: Schema.Types.String},
+    youtube:{type: Schema.Types.String},
+    rss:{type: Schema.Types.String},
+  }],
+  avatar:[{
+    type: Schema.Types.String,
+  }],
   // add user brief description and slogan
   post: [
     {
