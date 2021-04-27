@@ -11,13 +11,14 @@ import {
 } from "react-router-dom";
 import NavBar from './components/Nav/navbar'
 import Home from './Pages/Home/home';
-import Profile from './Pages/MyAccount/myAccount';
+import MyAccount from './Pages/MyAccount/myAccount';
 import Author from './Pages/AuthorPage/author';
-import SingleExp from './Pages/SinglePost/singlePost'
-import NewExp from './Pages/NewExp/newExp'
+import SinglePost from './Pages/SinglePost/singlePost'
+import NewExp from './Pages/CreatePost/createPost'
 import Posts from './Pages/Result/result'
 import Signup from './Pages/Signup/signup';
 import Login from './Pages/LogIn/login';
+import jwt_decode from "jwt-decode";
 // import FindById from './components/findbyId/findbyId';
 // import Edit from './components/Update/edit'
 
@@ -25,18 +26,17 @@ import Login from './Pages/LogIn/login';
 class App extends Component {
   state = {
     user:null,
-    _id : '60861b7746965b0d1e9c7de0', //the dummy user id
   }
   
   setUserInState = (incomingUserData) => {
     this.setState({ user: incomingUserData})
   }
-
+  // when the page refreshes, check localStorage for the user jwt token
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
       // YOU DO: check expiry!
-      let userDoc = JSON.parse(atob(token.split('.')[1])).user // decode jwt token
+      const userDoc = jwt_decode(token);  // decode jwt token
       this.setState({user: userDoc.user})      
     }
   }
@@ -51,29 +51,29 @@ render() {
           <Route path="/"  exact component={Home} />
           {/* <Route path="/register" component={Signup} /> */}
 
-          <Route path="/register" render={() => (
-              <Signup setUserInState={this.setUserInState}/>
+          <Route path="/register" render={(props) => (
+              <Signup {...props} setUserInState={this.setUserInState}/>
             )}/>
-          <Route path="/account/login" render={() => (
-              <Login setUserInState={this.setUserInState}/>
+          <Route path="/account/login" render={(props) => (
+              <Login {...props} setUserInState={this.setUserInState}/>
             )}/>
 
-          <Route path="/posts" render={() => (
-              <Posts setUserInState={this.setUserInState}/>
+          <Route path="/posts" render={(props) => (
+              <Posts {...props} loggedInUser={this.state.user}/>
             )}/>
-          <Route path="/myaccount" render={(props) => (
-              <Profile {...props} userId={this.state._id} />
+          <Route path="/myaccount" render={() => (
+              <MyAccount  loggedInUser={this.state.user} />
             )}/>
 
           <Route path="/account/author" render={(props) => (
-              <Author {...props} userId={this.state._id} />
+              <Author  loggedInUserId={this.state.user} />
             )}/>
           <Route path="/experience/create" render={(props) => (
-              <NewExp {...props} userId={this.state._id}/>
+              <NewExp {...props} loggedInUserId={this.state.user}/>
             )}/>
 
           <Route path="/post" render={(props) => (
-              <SingleExp {...props}/>
+              <SinglePost {...props} userId={this.state.user}/>
             )}/>
 
 

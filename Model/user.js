@@ -14,7 +14,7 @@ const userSchema = new Schema({
     type: Schema.Types.String,
   },
   password: {
-    type: Schema.Types.Number,
+    type: Schema.Types.String,
   },
   // add user brief description and slogan
   post: [

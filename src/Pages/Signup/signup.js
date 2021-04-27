@@ -38,8 +38,9 @@ import './signup.css';
       // console.log(newUser)
       services.create(newUser)
       .then(res => {
+        console.log(res)
         let token = res.data
-        console.log(token)
+        // console.log(token)
         localStorage.setItem('token', token);  
         const userDoc = jwt_decode(token); 
         this.props.setUserInState(userDoc.user)

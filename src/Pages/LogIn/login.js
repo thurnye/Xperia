@@ -22,18 +22,19 @@ export default class SignUpForm extends Component {
       email: this.state.email,
       password: this.state.password,
       }
-      console.log(newUser)
       services.postLogin(newUser)
       .then(res => {
-        console.log(res)
-        // let token = res.data
-        // console.log(token)
-        // localStorage.setItem('token', token);  
-        // const userDoc = jwt_decode(token); 
-        // this.props.setUserInState(userDoc.user)
-        // console.log(userDoc.user)
+        let token = res.data
+        localStorage.setItem('token', token);  
+        const userDoc = jwt_decode(token); 
+        this.props.setUserInState(userDoc.user)
         // this.props.history.push(`/`)
      })
+     .then(resp => {
+       //REDIRECT TO THE /findbyid/${el.id} PAGE
+      // this.props.history.goBack()
+      this.props.history.push('/')
+     } )
     .catch(e => {
       console.log(e);
     });

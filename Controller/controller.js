@@ -3,53 +3,55 @@ const User = require('../Model/user')
 const Post = require('../Model/postModel')
 const Comment = require('../Model/commentModel')
 const jwt = require('jsonwebtoken');
-const { post } = require('../Routes/routes');
+const bcrypt = require('bcrypt');
 
-
+const SALT_ROUNDS = 6; // tell bcrypt how many times to randomize the generation of salt. usually 6 is enough.
 
 
 
 
 //SignUp A User
 const postCreateUser = async (req, res, next) => {
-    //get the info from the front-end and send to the db
-    //CREATE USER
-    const newUser = new User ({
+    try{
+        //CREATE USER
+        const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS)
+        const newUser = new User ({
         // id: req.body.id,
         name: req.body.name,
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: hashedPassword,
     })
-    console.log(newUser)
-    // //SAVE USER IN THE DB
-    newUser.save()
-    .then(user => {
+        // //SAVE USER IN THE DB
+        const user = await newUser.save()
         const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
         // send a response to the front end
         res.status(200).json(token)
-    })
-    .catch(err => res.status(400).json(err))
-        
+    
+    }catch {
+      res.status(400).json('Bad Credentials');
+    }   
 }
+
+
 // Login a User
 const getLogIn = async (req, res) => {
     try {
-        console.log(req.body)
-    //   const user = await User.findOne({ email: req.body.email });
-    //       // check password. if it's bad throw an error.
-    //       if (!(await bcrypt.compare(req.body.password, user.password))) throw new Error();
+      const user = await User.findOne({ email: req.body.email });
+          // check password. if it's bad throw an error.
+          if (!(await bcrypt.compare(req.body.password, user.password))) throw new Error();
   
-    //   // if we got to this line, password is ok. give user a new token.
-    //   const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
-    //   res.json(token)
+      // if we got to this line, password is ok. give user a new token.
+      const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
+      res.json(token)
     } catch {
       res.status(400).json('Bad Credentials');
     }
-  }
+}
 
-//Creating A User Experience
-const postCreateUserExperience = async (req, res, next) => {
+
+//Creating A Post
+const postCreatePost = async (req, res, next) => {
     const userId = req.body.userId
     const newPost = new Post ({
         author : userId,
@@ -79,10 +81,12 @@ const postCreateUserExperience = async (req, res, next) => {
     .catch(err => res.status(400).json(err))
         
 }
+
+
 //Creating A Post Comments
-const postCreateUserExperienceomment = async (req, res, next) => {
+const postCreateComment = async (req, res, next) => {
     const postId = req.body.postId     //this is coming from the front end
-    const loggedInUserId = '60861b7746965b0d1e9c7de0'  //this is a dummy logged in user id
+    const loggedInUserId = '60873a341fa1f75dc1ee9a4a'  //this is a dummy logged in user id
     const newComment = new Comment ({
         comment: req.body.comment,
         userId: loggedInUserId,
@@ -151,6 +155,7 @@ const getAPostByID = (req, res, next) => {
                 }) 
             })
         })
+        .exec()
         .then(author => {
             console.log(author)
             res.send({author, post})
@@ -160,16 +165,27 @@ const getAPostByID = (req, res, next) => {
     .catch(err => res.status(400).json(err))
 }
 
+
+
 // //RETRIVE A user BY ID
 const getUserByID = (req, res, next) => {
     const authorId = req.params.id;
     console.log(authorId)
     User.findById(authorId)
-    .populate()
+    .populate({
+        path: 'post.trip',
+        populate:({
+            path: 'comments.comment',
+            populate: ({ 
+                path: 'userId',
+                populate: {path: 'post'}
+            }) 
+        })
+    })
     .exec()
-    .then(post => {
-        console.log(post)
-        // res.send({post})
+    .then(user => {
+        console.log(user)
+        res.send({user})
     })
     .catch(err => res.status(400).json(err))
 }
@@ -234,8 +250,8 @@ const postDelete = async (req, res, next) => {
 module.exports = {
     postCreateUser,
     getLogIn,
-    postCreateUserExperience,
-    postCreateUserExperienceomment,
+    postCreatePost,
+    postCreateComment,
     getPostsPage,
     // getACommentByID,
     getUserByID,

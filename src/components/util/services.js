@@ -8,11 +8,11 @@ class StuffDataService {
   }
   // create experience
   createExperience(data) {
-    return http.post("/api/experience", data);
+    return http.post("/api/post", data);
   }
   // create experience comments
   createExperienceComment(data) {
-    return http.post("/api/experience/comment", data);
+    return http.post("/api/post/comment", data);
   }
   // get all posts
   find() {

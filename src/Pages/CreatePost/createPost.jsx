@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../../components/Nav/navbar';
-import './newExp.css'
+import './newPost.css'
 import services from '../../components/util/services'
 
 class newExp extends Component {
@@ -8,6 +8,7 @@ class newExp extends Component {
         title: '',
         city: '',
         country: '',
+        story: '',
         tags: [],
         images: [],
     };
@@ -16,15 +17,17 @@ class newExp extends Component {
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
         // console.log([e.target.name], e.target.value )
+
     }
       
     onSubmit = async (e) => {
         e.preventDefault();
         const newExp = {
-            userId: this.props.userId,
+            userId: this.props.location.state,
             title: this.state.title,
             city: this.state.city,
             country: this.state.country,
+            story: this.state.story,
             tags: [],
             images: []
         }
@@ -164,7 +167,7 @@ class newExp extends Component {
                             <span class="input-group-text "><i>Tell Us Your Experience</i></span>
                             <div class="input-group mb-3">
                                 <textarea class="form-control exp-story"
-                                name="experience" 
+                                name="story" 
                                 aria-label="With textarea"
                                 // value={this.state.comment} 
                                 onChange={this.onChange}></textarea>
@@ -182,6 +185,7 @@ class newExp extends Component {
                         <button type="submit" className="btn explore">SUBMIT</button>
                         </div>
                     </form> 
+                    
                 </div>
             </React.Fragment>
         );

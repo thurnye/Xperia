@@ -8,10 +8,10 @@ router.get('/', Controller.getPostsPage)
 router.post('/api', Controller.postCreateUser);
 
 //post new user experience
-router.post('/api/experience', Controller.postCreateUserExperience);
+router.post('/api/post', Controller.postCreatePost);
 
 //post new user experience comment
-router.post('/api/experience/comment', Controller.postCreateUserExperienceomment);
+router.post('/api/post/comment', Controller.postCreateComment);
 
 //getting a post by id
 router.get('/api/:id', Controller.getAPostByID);
@@ -19,8 +19,9 @@ router.get('/api/:id', Controller.getAPostByID);
 
 // POST /api/users/login
 router.post('/api/user/login', Controller.getLogIn);
-//getting a user/author by id
-// router.get('/api/user/:id', Controller.getUserByID);
+
+//getting an author or loggedIn User account by id
+router.get('/api/user/:id', Controller.getUserByID);
 
 
 //getting an comments by id

@@ -13,7 +13,7 @@ export default class displayUsers extends Component {
         //DISPLAY ALL Posts
         services.find()
         .then(result => {
-            // console.log(result)
+            console.log(result)
             this.setState({
                 data: result.data.posts
             })
@@ -29,7 +29,7 @@ export default class displayUsers extends Component {
                 <div class="card" key={post._id}>
                         <img src="" class="card-img-top" alt="anImage"/>
                         <div class="card-body">
-                        <h5 class="card-title">{post.name} </h5>
+                        <h5 class="card-title">{post.title} </h5>
                         <p class="card-text">{post.city},{post.country} </p>
                         <p class="card-text">{post.title} </p>
                         <p class="card-text">{post._id}</p>
@@ -47,7 +47,9 @@ export default class displayUsers extends Component {
 
         return (
             <div>
+                This is where the search result lives
                 <div className="card-group">
+                    
                     {Inventory}
                 </div>
             </div>
