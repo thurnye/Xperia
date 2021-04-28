@@ -21,7 +21,7 @@ const ExpInfo = (props) => {
                     <Link to={{
                         pathname: `/account/author/${props.author._id}` ,
                         search: `?author=${props.author.name}`,
-                        state: `${props.author._id}`,
+                        state: {authorId: props.author._id},
                         hash: props.author._id,
                         }}>
                         <img src={Avatar} className="img-avatar" alt="..."/>

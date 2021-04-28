@@ -16,15 +16,16 @@ export default class profile extends Component {
 
     //RETRIEVING A PARTICULAR USER
     componentDidMount() {
-        // console.log()
-        // const id = this.props.location.state
-    //    services.findById(id)
-        // .then(user => {
-        //     this.setState({
-        //         data: user.data.data
-        //     })
-        // })
-        // .catch(err => console.log(err));
+        const id = this.props.location.state.authorId
+        // console.log(id)
+        services.findMyAccount(id)
+        .then(user => {
+            // console.log(user.data.user)
+            this.setState({
+                data: user.data.user
+            })
+        })
+        .catch(err => console.log(err));
     }
     
     //DELETE A USER
@@ -45,10 +46,10 @@ export default class profile extends Component {
                 <div class="card mb-3" >
                     <div class="row">
                         <div class="col-md-4 container userInfo">
-                            <AuthorInfo/>
+                            <AuthorInfo author={this.state.data}/>
                         </div>
                         <div class="col-md-8 components">
-                            <AuthorContents />
+                            <AuthorContents author={this.state.data}/>
                         </div>
                     </div>
                 </div>

@@ -55,7 +55,7 @@ class  experience extends Component {
                                 <Link to={{
                                     pathname: `/account/author/${author._id}`,
                                     search: `?author=${author.name}`,
-                                    state: `${author._id}`,
+                                    state: {authorId: author._id}
                                 }}>
                                     <img src={Avatar} className="img-avatar" alt="..."/>
                                 </Link>

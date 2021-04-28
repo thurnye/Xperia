@@ -20,12 +20,12 @@ class singlePost extends Component {
 
     componentDidMount() {
         // const authorID = ''the ExpInfo will get the author Id
-        const postID = this.props.location.state
+        const postId = this.props.location.state.postId
         console.log(this.props.location.state)
         // Get Single Post
-        services.findById(postID)
+        services.findById(postId)
         .then(result => {
-            // console.log(result)
+            console.log(result)
             this.setState({
                 post: result.data.post,
                 author: result.data.author

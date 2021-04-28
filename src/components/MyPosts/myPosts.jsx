@@ -47,13 +47,13 @@ class myPost extends Component {
       
                         // pathname: `/post/${post._id}` ,
                         search: `?title=${this.state.user.name}`,
-                        state: `${el.trip._id}`,
+                        state: {postId: el._id},
                         hash: this.state.user._id,
       
       
                          }} className="btn"> 
-                        <p><small className="text-mute"><i>Marano di Napoli</i></small></p>
-                        <h5><small className="text-mute">Italy</small></h5>
+                        <p><small className="text-mute"><i>{el.trip.city}</i></small></p>
+                        <h5><small className="text-mute">{el.trip.country}</small></h5>
                     </Link>
                     </div>
                     

@@ -48,7 +48,6 @@ render() {
     <React.Fragment>
       <NavBar />
       <SubNav/>
-      <Router>
         <Switch>
           <Route path="/"  exact component={Home} />
           {/* <Route path="/register" component={Signup} /> */}
@@ -68,7 +67,7 @@ render() {
             )}/>
 
           <Route path="/account/author" render={(props) => (
-              <Author  loggedInUserId={this.state.user} />
+              <Author {...props} loggedInUserId={this.state.user} />
             )}/>
           <Route path="/experience/create" render={(props) => (
               <NewExp {...props} loggedInUserId={this.state.user}/>
@@ -91,7 +90,6 @@ render() {
           {/* <Route path="/login" component={Login} />        */}
           {/* <Route path="/findbyid/" component={FindById} />        */}
         </Switch>
-      </Router>
     </React.Fragment>
     
   )

@@ -10,7 +10,7 @@ export default class displayUsers extends Component {
     } 
 
     componentDidMount() {
-
+        console.log('component')
         //DISPLAY ALL Posts
         services.find()
         .then(result => {
@@ -35,12 +35,12 @@ export default class displayUsers extends Component {
                         <h5 class="card-title">{post.title} </h5>
                         <p class="card-text">{post.city},{post.country} </p>
                         <p class="card-text">{post.title} </p>
-                        <p class="card-text">{post._id}</p>
+                        <p class="card-text">{post.author._id}</p>
                         </div>
                         <Link to={{
                             pathname: `/post/${post._id}` ,
                             search: `?author=${post.author.name}`,
-                            state: `${post._id}`,
+                            state: {postId: post._id},
                             hash: post.author._id,
                         }}
                         className="btn explore">EXPLORE </Link>
