@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from '../Avatar/avatar'
+import Avatar from '../../Public/Image/avatar.png'
+import {Link } from 'react-router-dom';
 import SocialMedia from '../SocialMedia/socialMedia'
 import sales from '../../Public/Image/sales.jpeg'
 import services from '../util/services'
@@ -16,7 +17,16 @@ const ExpInfo = (props) => {
         <React.Fragment>
             <div className="expInfo container">
                 <div className="expInfo-img">
-                    <Avatar author={props.author}/>
+                    {/* <Avatar author={props.author}/> */}
+                    <Link to={{
+                        pathname: `/account/author/${props.author._id}` ,
+                        search: `?author=${props.author.name}`,
+                        state: `${props.author._id}`,
+                        hash: props.author._id,
+                        }}>
+                        <img src={Avatar} className="img-avatar" alt="..."/>
+                    </Link>
+
                 </div>
                 <div className="googleMap">
                 <h6><span className="text-muted">Where We Are</span></h6>

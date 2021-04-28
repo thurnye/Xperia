@@ -47,6 +47,7 @@ render() {
   return (
     <React.Fragment>
       <NavBar />
+      <SubNav/>
       <Router>
         <Switch>
           <Route path="/"  exact component={Home} />

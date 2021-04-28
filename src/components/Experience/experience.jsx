@@ -2,7 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import './experience.css'
 import LandScape from '../../Public/Image/landscape.jpeg'
-import Avatar from '../Avatar/avatar'
+import Avatar from '../../Public/Image/avatar.png'
+import {Link } from 'react-router-dom';
 import CommentForm from '../Comment/FORM/commentForm'
 import CommentsList from '../Comment/CommentList/commentList'
 import { Component } from 'react';
@@ -12,7 +13,7 @@ class  experience extends Component {
     render () {
         const post = this.props.post
         const author = this.props.author
-        console.log(moment(post.createdAt).format('MMM Do YYYY'))
+        console.log(author._id)
         return (
             <React.Fragment>
                 <div className="experience">
@@ -46,7 +47,25 @@ class  experience extends Component {
                         </div>
                         <hr/>
                         <div className="user-experience">
-                            <Avatar author={this.props.author}/>
+
+
+                            {/* <Avatar author={this.props.author}/> */}
+                            <div className=" user-image">
+                                {author ?  
+                                <Link to={{
+                                    pathname: `/account/author/${author._id}`,
+                                    search: `?author=${author.name}`,
+                                    state: `${author._id}`,
+                                }}>
+                                    <img src={Avatar} className="img-avatar" alt="..."/>
+                                </Link>
+                        
+                                :  '' }
+                            </div>
+
+
+
+
                             <div className="user-name">
                             <h4><small className="text-muted">{author.name}</small></h4>
                             <h6><small className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis atque mollitia nam autem excepturi soluta?</small></h6>

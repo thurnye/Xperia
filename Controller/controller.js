@@ -42,7 +42,6 @@ const postCreateUser = async (req, res, next) => {
     }   
 }
 
-
 // Login a User
 const getLogIn = async (req, res) => {
     try {
@@ -145,7 +144,6 @@ const getAPostByID = (req, res, next) => {
     })
     .exec()
     .then(post => {
-        console.log(post)
         User.findById(post.author)
         .populate({
             path: 'post.trip',
@@ -191,26 +189,12 @@ const getUserByID = (req, res, next) => {
     .catch(err => res.status(400).json(err))
 }
 
-// //RETRIVE A Comment BY ID     //this is will give us the user that created the comment
-// const getACommentByID = (req, res, next) => {
-//     const postId = req.params.id;
-//     console.log(postId)
-//     Post.findById(postId)
-//     .populate('comments.comment')
-//     .exec()
-//     .then(post => {
-//         console.log(post)
-//         res.send({post})
-//     })
-//     .catch(err => res.status(400).json(err))
-// }
 
 
 // POSTING UPDATED USER INFO
 const postEdit = (req, res, next) => {
     const id = req.params.id;
     User.findById(id)
-    
     .then(user => {
         user.name = req.body.name;
         user.userName = req.body.username;
@@ -254,10 +238,8 @@ module.exports = {
     postCreatePost,
     postCreateComment,
     getPostsPage,
-    // getACommentByID,
     getUserByID,
     getAPostByID,
-    getEdit,
     postEdit, 
     postDelete
 }

@@ -38,7 +38,7 @@ const userXperience = (props) => {
               </Link>
               </div>
               
-          </div>
+            </div>
           </div>
           
         </div>   

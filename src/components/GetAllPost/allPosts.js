@@ -51,7 +51,6 @@ export default class displayUsers extends Component {
 
         return (
             <div>
-                <SubNav/>
                 <div className="card-group">
                     
                     {Inventory}
