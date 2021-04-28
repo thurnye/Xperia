@@ -22,6 +22,15 @@ const userSchema = new Schema({
   aboutMe:{
     type: Schema.Types.String,
   },
+  myCity:{
+    type: Schema.Types.String,
+  },
+  myStateProvince:{
+    type: Schema.Types.String,
+  },
+  myCountry:{
+    type: Schema.Types.String,
+  },
   socialMedia:[{
     facebook:{type: Schema.Types.String},
     instagram:{type: Schema.Types.String},

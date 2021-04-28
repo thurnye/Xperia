@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import jwt_decode from "jwt-decode";
 import { withRouter } from "react-router-dom";
 import services from '../../components/util/services'
 import EditForm from './editForm'
@@ -17,18 +18,15 @@ import Avatar from '../../Public/Image/avatar.png'
     myCity: '',
     myStateProvince: '',
     myCountry: '',
-    socialMedia: [{
-      facebook: "",
-      twitter: '',
-      instagram:'',
-      pinterest: '',
-      youtube: '',
-      rss: ''
-    }]
+    facebook: "",
+    twitter: '',
+    instagram:'',
+    pinterest: '',
+    youtube: '',
+    rss: ''
   }
-  onChange(e) {
-    // this.setState({[e.target.name]: e.target.value});
-    console.log([e.target.name], e.target.value)
+  onChange = (e) =>{
+    this.setState({[e.target.name]: e.target.value})
   }
 
   componentDidUpdate(prevProps) {
@@ -45,17 +43,15 @@ import Avatar from '../../Public/Image/avatar.png'
       email: user.email,
       aboutMe: user.aboutMe,
       slogan: user.slogan,
-      myCity: user.mycity,
+      myCity: user.myCity,
       myStateProvince: user.myStateProvince,
       myCountry: user.myCountry,
-      socialMedia: [{
-        facebook: user.socialMedia.facebook,
-        twitter: user.socialMedia.twitter,
-        instagram:user.socialMedia.instagram,
-        pinterest: user.socialMedia.pinterest,
-        youtube: user.socialMedia.youtube,
-        rss: user.socialMedia.rss
-      }]
+      facebook: user.socialMedia[0].facebook,  //later change the socialMedia[0].facbook......
+      twitter: user.socialMedia[0].twitter,
+      instagram:user.socialMedia[0].instagram,
+      pinterest: user.socialMedia[0].pinterest,
+      youtube: user.socialMedia[0].youtube,
+      rss: user.socialMedia[0].rss
   })
   // console.log(this.state)
     }
@@ -64,36 +60,42 @@ import Avatar from '../../Public/Image/avatar.png'
     
   
   
-  onUpdate(e) {
+  onUpdate = (e) => {
     e.preventDefault();
 
     // //GET CURRENT VALUES
     const id = this.state.id
-    console.log(id)
-    // const updatedUser = {
-    //   name: this.state.name,
-    //   email: this.state.email,
-    //   aboutMe: this.state.aboutMe,
-    //   slogan: this.state.slogan,
-    //   myCity: this.state.mycity,
-    //   myStateProvince: this.state.myStateProvince,
-    //   myCountry: this.state.myCountry,
-    //   socialMedia: [{
-    //     facebook: this.state.socialMedia.facebook,
-    //     twitter: this.state.socialMedia.twitter,
-    //     instagram:this.state.socialMedia.instagram,
-    //     pinterest: this.state.socialMedia.pinterest,
-    //     youtube: this.state.socialMedia.youtube,
-    //     rss: this.state.socialMedia.rss
-    //   }]
-    // }
-    // services.postEdit(id, updatedUser)
-    // .then(res=> {
-    //   console.log(res)
-    //   //REDIRECT TO THE /findbyid/${el.id} PAGE
-    //   // this.props.history.goBack()
-    // })
-    // .catch(err => console.log(err))
+    const updatedUser = {
+      name: this.state.name,
+      email: this.state.email,
+      aboutMe: this.state.aboutMe,
+      slogan: this.state.slogan,
+      myCity: this.state.myCity,
+      myStateProvince: this.state.myStateProvince,
+      myCountry: this.state.myCountry,
+      socialMedia: [{
+        'facebook': this.state.facebook,
+        'twitter': this.state.twitter,
+        'instagram':this.state.instagram,
+        'pinterest': this.state.pinterest,
+        'youtube': this.state.youtube,
+        'rss': this.state.rss
+      }]
+    }
+    services.postEdit(id, updatedUser)
+    .then(res=> {
+      // console.log(res)
+      
+      let token = res.data
+      localStorage.setItem('token', token);  
+      const userDoc = jwt_decode(token); 
+      console.log(userDoc)
+      this.props.setUserInState(userDoc.user)
+    }).then(result => {
+      //REDIRECT TO THE user account PAGE
+      this.props.history.goBack()
+    })
+    .catch(err => console.log(err))
   }
 
 
@@ -164,37 +166,37 @@ import Avatar from '../../Public/Image/avatar.png'
                         </div>
                         <div class="form-group col-md-4">
                           <label for="inputState">State/Province</label>
-                          <input onChange={this.onChange} name="myStatePprovince" value={this.state.myStateProvince} type="text" class="form-control" id="inputStatePprovince"/>
+                          <input onChange={this.onChange} name="myStateProvince" value={this.state.myStateProvince} type="text" class="form-control" id="inputStatePprovince"/>
                         </div>
                         <div class="form-group col-md-4">
                           <label for="inputState">Country</label>
-                          <input onChange={this.onChange} name="country" value={this.state.myCountry} type="text" class="form-control" id="inputCountry"/>
+                          <input onChange={this.onChange} name="myCountry" value={this.state.myCountry} type="text" class="form-control" id="inputCountry"/>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="inputCity">Facebook Url:</label>
-                          <input onChange={this.onChange} name="facebook" value={this.state.socialMedia.facebook} type="url" class="form-control" id="inputFacebook"/>
+                          <input onChange={this.onChange} name="facebook" value={this.state.facebook} type="url" class="form-control" id="inputFacebook"/>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputState">Instagram Url:</label>
-                          <input onChange={this.onChange} name="instagram" value={this.state.socialMedia.instagram} type="url" class="form-control" id="inputInstagram"/>
+                          <input onChange={this.onChange} name="instagram" value={this.state.instagram} type="url" class="form-control" id="inputInstagram"/>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputState">Twitter Url:</label>
-                          <input onChange={this.onChange} name="twitter" value={this.state.socialMedia.twitter} type="url" class="form-control" id="inputTwitter"/>
+                          <input onChange={this.onChange} name="twitter" value={this.state.twitter} type="url" class="form-control" id="inputTwitter"/>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputState">Pinterest Url:</label>
-                          <input onChange={this.onChange} name="pinterest" value={this.state.socialMedia.pinterest} type="url" class="form-control" id="inputPinterest"/>
+                          <input onChange={this.onChange} name="pinterest" value={this.state.pinterest} type="url" class="form-control" id="inputPinterest"/>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="inputState">Youtube url:</label>
-                          <input onChange={this.onChange} name="youtube" value={this.state.socialMedia.youtube} type="url" class="form-control" id="inputYoutube"/>
+                          <input onChange={this.onChange} name="youtube" value={this.state.youtube} type="url" class="form-control" id="inputYoutube"/>
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputState">RSS:</label>
-                          <input onChange={this.onChange} name="rsst" value={this.state.socialMedia.rss} type="url" class="form-control" id="inputRss"/>
+                          <label for="inputState">RSS Url:</label>
+                          <input onChange={this.onChange} name="rss" value={this.state.rss} type="url" class="form-control" id="inputRss"/>
                         </div>
                     </div>
                     <div class="form-check form-group">

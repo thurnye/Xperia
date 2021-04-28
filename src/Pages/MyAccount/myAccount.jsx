@@ -20,7 +20,7 @@ export default class myAccount extends Component {
     //RETRIEVING A PARTICULAR USER
     componentDidUpdate(prevProps, prevState) {
         if (this.props.loggedInUser !== prevProps.loggedInUser) {
-            console.log(this.props.loggedInUser._id)
+            console.log(this.props.loggedInUser)
               services.findMyAccount(this.props.loggedInUser._id)
             .then(user => {
                 // console.log(user)

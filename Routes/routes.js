@@ -28,7 +28,7 @@ router.get('/api/user/:id', Controller.getUserByID);
 // router.get('/api/comment/:id', Controller.getACommentByID);
 
 //get user to edit
-router.get('/edit/:id', Controller.getEdit);
+// router.get('/edit/:id', Controller.getEdit);
 
 //post the edited user
 router.post('/edit/:id', Controller.postEdit);

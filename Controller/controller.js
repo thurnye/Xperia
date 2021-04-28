@@ -21,6 +21,15 @@ const postCreateUser = async (req, res, next) => {
         username: req.body.username,
         email: req.body.email,
         password: hashedPassword,
+        socialMedia: 
+            {
+              facebook: '',
+              twitter: '',
+              instagram: '',
+              pinterest: '',
+              youtube: '',
+              rss: ''
+            }
     })
         // //SAVE USER IN THE DB
         const user = await newUser.save()
@@ -197,33 +206,32 @@ const getUserByID = (req, res, next) => {
 // }
 
 
-
-//  GETTING A USER TO EDIT
-const getEdit = (req, res, next) => {
-    console.log(req.body)
-    // const id = req.params.id;
-    // User.findById(id)
-    // .then(data => {
-    //     res.send({data})
-    // })
-    // .catch(err => res.status(400).json(err))
-}
-
 // POSTING UPDATED USER INFO
 const postEdit = (req, res, next) => {
-    const id = req.body.id;
+    const id = req.params.id;
     User.findById(id)
+    
     .then(user => {
         user.name = req.body.name;
-        user.username = req.body.username;
+        user.userName = req.body.username;
         user.email = req.body.email;
-        user.password = req.body.password;
-        user.Email = req.body.email;
+        user.slogan =  req.body.slogan;
+        user.aboutMe =  req.body.aboutMe;
+        user.myCity =  req.body.myCity;
+        user.myStateProvince =  req.body.myStateProvince;
+        user.myCountry =  req.body.myCountry;
+        user.socialMedia[0].facebook = req.body.socialMedia[0].facebook;
+        user.socialMedia[0].twitter = req.body.socialMedia[0].twitter;
+        user.socialMedia[0].instagram = req.body.socialMedia[0].instagram;
+        user.socialMedia[0].pinterest = req.body.socialMedia[0].pinterest;
+        user.socialMedia[0].youtube = req.body.socialMedia[0].youtube;
+        user.socialMedia[0].rss = req.body.socialMedia[0].rss;
+
         return user.save()
     })
     .then((user) => {
-        // send a response to the front end
-        res.status(200).json(user)
+        const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
+        res.status(200).json(token)
     })
     .catch(err => res.status(400).json(err));
 }
