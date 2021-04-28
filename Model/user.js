@@ -30,10 +30,9 @@ const userSchema = new Schema({
     youtube:{type: Schema.Types.String},
     rss:{type: Schema.Types.String},
   }],
-  avatar:[{
+  avatarUrl:{
     type: Schema.Types.String,
-  }],
-  // add user brief description and slogan
+  },
   post: [
     {
       trip: {

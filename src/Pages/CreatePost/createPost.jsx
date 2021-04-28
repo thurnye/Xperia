@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/Nav/navbar';
+import MultipleFile from '../../components/FileUpload/Multiple/multipleFileUpload'
 import './newPost.css'
 import services from '../../components/util/services'
 
@@ -15,21 +15,34 @@ class newExp extends Component {
   
   
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-        // console.log([e.target.name], e.target.value )
-
+        // current array of tags
+        const tags = this.state.tags
+        let index
+        if (e.target.checked) {
+            // add the value of the checkbox to tags array
+            tags.push(e.target.value)
+        } else {
+            // or remove the value from the unchecked checkbox from the array
+            index = tags.indexOf(e.target.value)
+            tags.splice(index, 1)
+        }
+        // update the state with the new array of tags
+        // this.setState({ tags: tags })
+        this.setState({ [e.target.name]: e.target.value, tags: tags  });
     }
       
     onSubmit = async (e) => {
         e.preventDefault();
+        
+        console.log(this.state.tags)
         const newExp = {
             userId: this.props.location.state,
             title: this.state.title,
             city: this.state.city,
             country: this.state.country,
             story: this.state.story,
-            tags: [],
-            images: []
+            tags: this.state.tags,
+            images: this.state.images
         }
         console.log(newExp)
         services.createExperience(newExp)
@@ -129,8 +142,8 @@ class newExp extends Component {
                                     type="checkbox"
                                     name="resturants" 
                                     id="inlineCheckbox3"
-                                    value="Resturants" />
-                                    <label class="form-check-label" for="inlineCheckbox3">Resturants</label>
+                                    value="Resturants"/>
+                                    <label class="form-check-label" for="inlineCheckbox4">Resturants</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input 
@@ -140,7 +153,7 @@ class newExp extends Component {
                                     name="night life" 
                                     id="inlineCheckbox3"
                                     value="Night Life" />
-                                    <label class="form-check-label" for="inlineCheckbox3">Night Life</label>
+                                    <label class="form-check-label" for="inlineCheckbox5">Night Life</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input 
@@ -150,7 +163,7 @@ class newExp extends Component {
                                     name="camping" 
                                     id="inlineCheckbox3"
                                     value="Camping" />
-                                    <label class="form-check-label" for="inlineCheckbox3">Camping</label>
+                                    <label class="form-check-label" for="inlineCheckbox6">Camping</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input 
@@ -160,7 +173,7 @@ class newExp extends Component {
                                     name="Others" 
                                     id="inlineCheckbox3"
                                     value="Others" />
-                                    <label class="form-check-label" for="inlineCheckbox3">Others</label>
+                                    <label class="form-check-label" for="inlineCheckbox7">Others</label>
                                 </div>
                             </div>
 
@@ -173,12 +186,7 @@ class newExp extends Component {
                                 onChange={this.onChange}></textarea>
                             </div>
                             <div class="input-group mb-3">
-                                <input 
-                                class="form-control" 
-                                type="file" 
-                                id="formFileMultiple" 
-                                multiple 
-                                style={{height: 'auto'}}/>
+                                <MultipleFile setUploadInState={this.state.images} {...this.props}/>
                             </div>
                         </div>
                         <div class="input-group-submit mb-3">

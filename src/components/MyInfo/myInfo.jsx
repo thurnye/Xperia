@@ -1,16 +1,12 @@
 import React from 'react';
+import {Link } from 'react-router-dom';
 import './myInfo.css'
 import Avatar from '../Avatar/avatar' 
 
 
-
-
-
-
-
-
-
-const myInfo = () => {
+const myInfo = (props) => {
+    const user = props.loggedInUser
+    // console.log(user)
     return (
         <React.Fragment>
             This is the left half of the profile
@@ -50,6 +46,9 @@ const myInfo = () => {
                 </div>
             </div>
 
+            <div className="settings">
+                <Link to={{pathname: `/settings`}}className="btn explore">Settings</Link>
+            </div>
         </React.Fragment>
     );
 }

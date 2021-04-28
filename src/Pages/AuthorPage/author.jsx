@@ -28,12 +28,12 @@ export default class profile extends Component {
     
     //DELETE A USER
     deleteUser = async() => {
-        const id = this.props.location.state;
-       await services.remove(id)
-       .then(result => {
-            // this.props.history.push('/')
-        })
-        .catch(err=> console.log(err))
+    //     const id = this.props.location.state;
+    //    await services.remove(id)
+    //    .then(result => {
+    //         // this.props.history.push('/')
+    //     })
+    //     .catch(err=> console.log(err))
     }
     render () {
         return (

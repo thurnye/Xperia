@@ -10,6 +10,7 @@ import {
   Route
 } from "react-router-dom";
 import NavBar from './components/Nav/navbar'
+import SubNav from './components/SubNav/subNav'
 import Home from './Pages/Home/home';
 import MyAccount from './Pages/MyAccount/myAccount';
 import Author from './Pages/AuthorPage/author';
@@ -20,7 +21,7 @@ import Signup from './Pages/Signup/signup';
 import Login from './Pages/LogIn/login';
 import jwt_decode from "jwt-decode";
 // import FindById from './components/findbyId/findbyId';
-// import Edit from './components/Update/edit'
+import Update from './Pages/Update/edit'
 
 
 class App extends Component {
@@ -71,13 +72,14 @@ render() {
           <Route path="/experience/create" render={(props) => (
               <NewExp {...props} loggedInUserId={this.state.user}/>
             )}/>
+            <Route path="/settings" render={(props) => (
+              <Update  loggedInUserId={this.state.user}/>
+            )}/>
 
           <Route path="/post" render={(props) => (
               <SinglePost {...props} userId={this.state.user}/>
             )}/>
-
-
-
+          
 
 
 
@@ -87,7 +89,6 @@ render() {
 
           {/* <Route path="/login" component={Login} />        */}
           {/* <Route path="/findbyid/" component={FindById} />        */}
-          {/* <Route path="/edit/" component={Edit} />         */}
         </Switch>
       </Router>
     </React.Fragment>

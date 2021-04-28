@@ -7,7 +7,7 @@ import {Link } from 'react-router-dom';
 
 
 const avatar = (props) => {
-
+    // console.log(props.author._id)
 
     return (
         <div className=" user-image">
@@ -15,7 +15,7 @@ const avatar = (props) => {
             <Link to={{
                 pathname: `/account/author/${props.author._id}` ,
                 search: `?author=${props.author.name}`,
-                state: `${props._id}`,
+                state: `${props.author._id}`,
                 hash: props.author._id,
             }}>
                 <img src={Avatar} className="img-avatar" alt="..."/>

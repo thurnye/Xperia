@@ -1,5 +1,6 @@
 import React from 'react';
 import './subnav.css'
+import {Link } from 'react-router-dom'
 
 const subNav = () => {
     return (
@@ -7,22 +8,52 @@ const subNav = () => {
             <div className="sub-nav">
                 <ul>
                     <li>
-                        <a href="#">Beaches</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=beaches`,
+                            state: `Beaches`,
+                        }}
+                        className="btn sub-nav-items">Beaches</Link>
                     </li>
                     <li>
-                        <a href="#">Dog-friendly</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=animalfriendly`,
+                            state: `Animal Friendly`,
+                        }}
+                        className="btn sub-nav-items">Animal Friendly</Link>
                     </li>
                     <li>
-                        <a href="#">Resturants</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=resturants`,
+                            state: `Resturants`,
+                        }}
+                        className="btn sub-nav-items">Resturants</Link>
                     </li>
                     <li>
-                        <a href="#">Overnight</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=nightlife`,
+                            state: `Night Life`,
+                        }}
+                        className="btn sub-nav-items">Night Life</Link>
                     </li>
                     <li>
-                        <a href="#">Camping</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=camping`,
+                            state: `Camping`,
+                        }}
+                        className="btn sub-nav-items">Camping</Link>
                     </li>
                     <li>
-                        <a href="#">Low Budgets</a>
+                    <Link to={{
+                            pathname: `/posts` ,
+                            search: `?q=lowbudget`,
+                            state: `Low Budgets`,
+                        }}
+                        className="btn sub-nav-items">Low Budgets</Link>
                     </li>
                 </ul>
             </div>

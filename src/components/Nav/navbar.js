@@ -3,6 +3,7 @@ import React from 'react';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import SubNav from '../SubNav/subNav'
 import './navbar.css';
 
 
@@ -26,10 +27,10 @@ const navbar = () => {
                         <Nav.Link href="/posts">All Posts</Nav.Link>
                         <Nav.Link href="/register">SignUp</Nav.Link>
                         <Nav.Link href="/account/login">Login</Nav.Link>
+                        <Nav.Link href="/settings">Settings</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>   
-              
             </header>
         </React.Fragment>
     );

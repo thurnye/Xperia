@@ -200,12 +200,13 @@ const getUserByID = (req, res, next) => {
 
 //  GETTING A USER TO EDIT
 const getEdit = (req, res, next) => {
-    const id = req.params.id;
-    User.findById(id)
-    .then(data => {
-        res.send({data})
-    })
-    .catch(err => res.status(400).json(err))
+    console.log(req.body)
+    // const id = req.params.id;
+    // User.findById(id)
+    // .then(data => {
+    //     res.send({data})
+    // })
+    // .catch(err => res.status(400).json(err))
 }
 
 // POSTING UPDATED USER INFO

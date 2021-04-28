@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
 import services from '../util/services'
+import SubNav from '../SubNav/subNav'
 
 export default class displayUsers extends Component {
 
@@ -26,6 +27,8 @@ export default class displayUsers extends Component {
     render() {
        const Inventory =  this.state.data.map((post)=> {
             return (
+                <React.Fragment>
+                    {/* <h6>{this.props.location.state}</h6> */}
                 <div class="card" key={post._id}>
                         <img src="" class="card-img-top" alt="anImage"/>
                         <div class="card-body">
@@ -42,12 +45,13 @@ export default class displayUsers extends Component {
                         }}
                         className="btn explore">EXPLORE </Link>
                 </div>
+                </React.Fragment>
             )
         })
 
         return (
             <div>
-                This is where the search result lives
+                <SubNav/>
                 <div className="card-group">
                     
                     {Inventory}
