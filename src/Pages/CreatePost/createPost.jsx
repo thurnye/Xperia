@@ -185,7 +185,7 @@ class newExp extends Component {
                                 // value={this.state.comment} 
                                 onChange={this.onChange}></textarea>
                             </div>
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3 dragndrop">
                                 <MultipleFile setUploadInState={this.state.images} {...this.props}/>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from '../../components/Nav/navbar';
-import './myAccount.css'
 import MyInfo from '../../components/MyInfo/myInfo'
 import MyPosts from '../../components/MyPosts/myPosts'
 import services from '../../components/util/services'

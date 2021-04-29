@@ -107,19 +107,13 @@ class myPost extends Component {
        
        
        {/* This is for adding new experience */}
-        <div class="item card">
-          <img src="#"   style= {{width: "250px"}}alt=""/>
-          <div class="place">
-            <div className="preview-info">
+        <div class="addPost card">
               <Link to={{
                 pathname: `/experience/create`,
                 state: this.props.userId
                 }} className="btn"> 
-              <p><small className="text-mute"><i>Form Element</i></small></p>
-              <h5><small className="text-mute">Form</small></h5>
+                <h5><small className="text-mute">ADD POST</small></h5>
             </Link>
-            </div>
-          </div>
         </div>
       </React.Fragment>
     );
