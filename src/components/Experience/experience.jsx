@@ -10,12 +10,26 @@ import { Component } from 'react';
 // import CommentList from '../Comment/COMMENTSLIST/commentList';
 
 class  experience extends Component {
+    state = {
+        authorPost: this.props.author.post,
+        author: this.props.author
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.author !== prevProps.author) {
+            console.log(this.props.author)
+            this.setState({
+                authorPost: this.props.author.post,
+                author: this.props.author
+            })
+        }
+      }
     render () {
         const post = this.props.post
         const author = this.props.author
         console.log(author._id)
         return (
             <React.Fragment>
+
                 <div className="experience">
                     <div className="container">
                         <div className="experience-head">
@@ -49,7 +63,7 @@ class  experience extends Component {
                         <div className="user-experience">
 
 
-                            {/* <Avatar author={this.props.author}/> */}
+                            {/* Link to the author page */}
                             <div className=" user-image">
                                 {author ?  
                                 <Link to={{

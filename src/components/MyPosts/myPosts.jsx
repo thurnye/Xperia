@@ -42,11 +42,8 @@ class myPost extends Component {
                     <div className="preview-info">
                        <Link to={{
                          pathname: `/post/${el.trip._id}`,
-                        //  state: props.eid    //store the user experience in state
-      
-                        // pathname: `/post/${post._id}` ,
                         search: `?title=${this.state.user.name}`,
-                        state: {postId: el._id},
+                        state: {postId: el.trip._id},
                         hash: this.state.user._id,
       
       

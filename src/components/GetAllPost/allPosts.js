@@ -35,7 +35,8 @@ export default class displayUsers extends Component {
                         <h5 class="card-title">{post.title} </h5>
                         <p class="card-text">{post.city},{post.country} </p>
                         <p class="card-text">{post.title} </p>
-                        <p class="card-text">{post.author._id}</p>
+                        <p class="card-text">author Id: {post.author._id}</p>
+                        <p class="card-text">postId: {post._id}</p>
                         </div>
                         <Link to={{
                             pathname: `/post/${post._id}` ,

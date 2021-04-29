@@ -10,13 +10,13 @@ function MyDropzone() {
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
     console.log(acceptedFiles)
-    const url = `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/upload`
+    const url = `https://api.cloudinary.com/v1_1/xperiacloud/upload`
     
 
     acceptedFiles.forEach( async(acceptedFiles)=>{
         const formData = new FormData();
         formData.append('file', acceptedFiles)
-        formData.append('upload_preset', process.env.CLOUDINARY_UPLOAD_PRESET)
+        formData.append('upload_preset', 'Xperia')
         
         const response = await fetch(url, {
             method : 'post',

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/Nav/navbar';
 import './author.css'
 import AuthorInfo from '../../components/AuthorProfile/authorProfile'
 import AuthorContents from '../../components/AuthorContents/authorContents'

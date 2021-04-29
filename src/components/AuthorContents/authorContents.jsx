@@ -47,7 +47,7 @@ class authorPost extends Component {
                        <Link to={{
                          pathname: `/post/${el.trip._id}`,
                         search: `?title=${this.state.author.name}`,
-                        state: {postId: el._id},
+                        state: {postId: el.trip._id},
                         hash: this.state.author._id,
                          }} className="btn"> 
                         <p><small className="text-mute"><i>{el.trip.city}</i></small></p>

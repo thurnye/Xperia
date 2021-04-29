@@ -133,6 +133,7 @@ const getPostsPage = async(req, res, next) => {
 //RETRIVE A Post BY ID
 const getAPostByID = (req, res, next) => {
     const postId = req.params.id;
+    console.log(postId)
     Post.findById(postId)
     .populate({
         path: 'comments.comment',
@@ -144,6 +145,7 @@ const getAPostByID = (req, res, next) => {
     })
     .exec()
     .then(post => {
+        console.log(post)
         User.findById(post.author)
         .populate({
             path: 'post.trip',
@@ -157,6 +159,7 @@ const getAPostByID = (req, res, next) => {
         })
         .exec()
         .then(author => {
+            console.log(author)
             res.send({author, post})
         })
 
