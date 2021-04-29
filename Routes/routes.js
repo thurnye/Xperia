@@ -37,6 +37,10 @@ router.post('/edit/:id', Controller.postEdit);
 router.post('/api/removePost/:id', Controller.postDeleteAPost);
 
 
+//delete a user
+router.post('/api/deleteUser/:id', Controller.postDeleteAUser);
+
+
 
 
 module.exports = router;

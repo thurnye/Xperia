@@ -36,7 +36,7 @@ class newExp extends Component {
         
         console.log(this.state.tags)
         const newExp = {
-            userId: this.props.location.state,
+            userId: this.props.location.state.userId,
             title: this.state.title,
             city: this.state.city,
             country: this.state.country,

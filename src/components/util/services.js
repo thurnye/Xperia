@@ -44,18 +44,18 @@ class StuffDataService {
   removePost(id) {
     return http.post(`/api/removePost/${id}`);
   }
-
-  remove(id) {
-    return http.post(`/api/${id}`);
+// delete a user
+  deleteUser(id) {
+    return http.post(`/api/deleteUser/${id}`);
   }
 
-  deleteAll() {
-    return http.delete(`/api`);
-  }
+  // deleteAll() {
+  //   return http.delete(`/api`);
+  // }
 
-  findByTitle(title) {
-    return http.get(`/api?title=${title}`);
-  }
+  // findByTitle(title) {
+  //   return http.get(`/api?title=${title}`);
+  // }
 }
 
 export default new StuffDataService();

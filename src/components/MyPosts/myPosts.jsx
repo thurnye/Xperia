@@ -29,11 +29,11 @@ class myPost extends Component {
     //DELETE A Post
     deletePost = (postId) => {
       console.log(postId)
-      services.removePost(postId)
+      services.deleteUser(postId)
       .then(result => {
-              // this.props.history.push('/')
-          })
-          .catch(err=> console.log(err))
+        console.log(result)
+      })
+      // window.location.reload()
   }
   
   render () {
@@ -66,9 +66,10 @@ class myPost extends Component {
                 </div>
                 <div>
                   <div className="post-action">
-                  <a href="" class="badge badge-secondary">Edit</a>
-                  {/* <!-- Button trigger modal --> */}
-                  <a href="delete-post"  class="badge badge-danger" data-toggle="modal" data-target="#exampleModalCenter">Del</a></div>
+                    <a href="" class="badge badge-secondary">Edit</a>
+                    {/* <!-- Button trigger modal --> */}
+                    <a href="delete-post"  class="badge badge-danger" data-toggle="modal" data-target="#exampleModalCenter">Del</a>
+                  </div>
                 {/* <!-- Modal --> */}
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">

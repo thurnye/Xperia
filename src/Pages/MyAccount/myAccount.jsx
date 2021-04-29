@@ -35,22 +35,8 @@ export default class myAccount extends Component {
     }
     
     
-    //DELETE A USER
-    deleteUser = async() => {
-        // const id = this.props.location.state;
-        // await services.remove(id)
-        // .then(result => {
-        //         // this.props.history.push('/')
-        //     })
-        //     .catch(err=> console.log(err))
-    }
+    
     render () {
-        // let displayInfo;
-        // user = this.state.user
-        //  if (user){
-        //    return  displayed = 
-        //  }
-
         return (
             <React.Fragment>
                 {/* <NavBar/> */}

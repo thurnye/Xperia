@@ -222,9 +222,9 @@ const postEdit = (req, res, next) => {
     .catch(err => res.status(400).json(err));
 }
 
-//DELETING A USER
+//DELETING A POST
 const postDeleteAPost = async (req, res, next) => {
-    // try{ 
+    try{ 
     const postId = req.params.id;
     let authorId = ''
 
@@ -246,17 +246,53 @@ const postDeleteAPost = async (req, res, next) => {
             author.save()
             // delete the post 
             post.remove()
-            res.status(200)
+            res.status(200).json()
         }
     }
-
-    // .then(result => {
-    //     console.log(result)
-    //       res.status(200).json(result)
-    //   })
-    // .catch(err => res.status(400).json(err))
-    // } catch(err => res.status(400).json(err))
+}catch(err) {
+    res.status(400).json(err);
+  }
 }
+
+//DELETING A USER
+const postDeleteAUser = async (req, res, next) => {
+    try{ 
+    const userId = req.params.id;
+    console.log(userId)
+    // find the user //
+    const user = await User.findById(userId)
+    user.deleteOne()
+
+    //find all post where authorId ===== userId
+        const PostDel= await Post.deleteMany({
+            'author': userId
+        })
+        console.log(PostDel)
+    res.status(200).json()
+    }catch(err) {
+        console.log(err)
+        res.status(400).json(err);
+      }
+
+    //   //find all post where authorId ===== userId
+    // const allPost = await Post.find({'author' : userId})
+    // if(allPost){
+    //     const PostDel= await Post.deleteMany({
+    //         'author': userId
+    //     })
+    //     console.log(PostDel)
+    // }
+    
+    // res.status(200).json()
+}
+
+
+
+
+
+
+
+
 
 module.exports = {
     postCreateUser,
@@ -267,5 +303,6 @@ module.exports = {
     getUserByID,
     getAPostByID,
     postEdit, 
-    postDeleteAPost
+    postDeleteAPost,
+    postDeleteAUser
 }

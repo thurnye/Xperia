@@ -75,7 +75,7 @@ render() {
             <NewExp {...props} loggedInUserId={this.state.user}/>
           )}/>
           <Route path="/settings" render={(props) => (
-            <Update  loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
+            <Update {...props} loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
           )}/>
 
         <Route path="/post" render={(props) => (

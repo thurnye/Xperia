@@ -35,7 +35,7 @@ import Avatar from '../../Public/Image/avatar.png'
       
       // RETRIEVE THE USER
       const user = this.props.loggedInUserId
-      console.log(user)
+      // console.log(user)
       // console.log(user._id)
       this.setState({
       id: user._id,
@@ -99,6 +99,18 @@ import Avatar from '../../Public/Image/avatar.png'
   }
 
 
+    //DELETE My Account
+    deleteAccount = () => {
+      console.log(this.state.id)
+      services.deleteUser(this.state.id)
+      .then(result => {
+        console.log(result.data)
+        // remove the token from local storage
+        localStorage.removeItem('token') 
+        this.props.history.push('/register')
+      })
+  }
+
   render() { 
     // console.log(this.props)
     return (
@@ -128,7 +140,46 @@ import Avatar from '../../Public/Image/avatar.png'
                   <p class="card-text"></p>
 
                 </div>
+
+                    
+
               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
               <div class="col-md-8 components">
                 <div class="container editForm">
