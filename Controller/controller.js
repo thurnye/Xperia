@@ -197,7 +197,7 @@ const postEdit = (req, res, next) => {
     User.findById(id)
     .then(user => {
         user.name = req.body.name;
-        user.userName = req.body.username;
+        user.userName = req.body.userName;
         user.email = req.body.email;
         user.slogan =  req.body.slogan;
         user.aboutMe =  req.body.aboutMe;

@@ -8,12 +8,12 @@ import './authorContents.css'
 
 
 
-// Get all posts where User === UserId
-class myPost extends Component {
+// Get all posts where author === authorId
+class authorPost extends Component {
 
   state = {
-    myPost : null,
-    user: null
+    authorPost : null,
+    author: null
   }
 
 
@@ -22,23 +22,23 @@ class myPost extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.author !== prevProps.author) {
            this.setState({
-             myPost: this.props.author.post,
-             user: this.props.author
+             authorPost: this.props.author.post,
+             author: this.props.author
            })
     }
   }
   
   render () {
-    const myPost = this.state.myPost
-    console.log(myPost)
+    const authorPost = this.state.authorPost
+    console.log(authorPost)
     return (
       <React.Fragment> 
         <div class="masonry">
           <div class="masonry"></div>
 
             {
-              myPost ?  
-              myPost.map(el => {
+              authorPost ?  
+              authorPost.map(el => {
                 return (
                   <div class="item card" key={el._id}>
                   <img src="https://mdbootstrap.com/img/Photos/Others/food3.jpg"   style= {{width: "150px"}}alt=""/>
@@ -46,9 +46,9 @@ class myPost extends Component {
                     <div className="preview-info">
                        <Link to={{
                          pathname: `/post/${el.trip._id}`,
-                        search: `?title=${this.state.user.name}`,
+                        search: `?title=${this.state.author.name}`,
                         state: {postId: el._id},
-                        hash: this.state.user._id,
+                        hash: this.state.author._id,
                          }} className="btn"> 
                         <p><small className="text-mute"><i>{el.trip.city}</i></small></p>
                         <h5><small className="text-mute">{el.trip.country}</small></h5>
@@ -67,13 +67,10 @@ class myPost extends Component {
        
        
         
-        <div className="foot components">
-          <p className="mb-0">© 2021 Tamunotonye Daniel, All Rights Reserved</p>
-        </div>
       </React.Fragment>
     );
   }
   
 }
 
-export default myPost;
+export default authorPost;

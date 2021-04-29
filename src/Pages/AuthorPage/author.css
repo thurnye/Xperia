@@ -2,7 +2,12 @@
     /* border: 2px dotted red; */
 }
 
-
+.img-avatar {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 4px dotted red;
+}
  /* X-Small devices (portrait phones, less than 576px) */
  /* No media query for `xs` since this is the default in Bootstrap */
 

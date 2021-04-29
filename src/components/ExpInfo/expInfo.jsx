@@ -15,6 +15,7 @@ const ExpInfo = (props) => {
     
     return (
         <React.Fragment>
+            
             <div className="expInfo container">
                 <div className="expInfo-img">
                     {/* <Avatar author={props.author}/> */}

@@ -6,3 +6,52 @@
 a{
     color: black
 }
+.home .jumbotron {
+    border-radius: 0;
+    text-align: center;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: cornsilk;
+    background-image: url("../../Public//Image/jumbotron.jpeg"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
+}
+.home h3{
+    font-size: 40px;
+}
+.home .jumbotron .container {
+    background-color: #08010759;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .home .jumbotron {
+        height: 60vh;
+    }
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .home .jumbotron {
+       
+        height: 60vh;
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .home .jumbotron {
+        
+        height: 60vh;
+    }
+}

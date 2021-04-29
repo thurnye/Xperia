@@ -6,6 +6,7 @@ import MyPosts from '../../components/MyPosts/myPosts'
 import services from '../../components/util/services'
 
 
+
 // THIS IS A VISITED USER ACCOUNT AND ALSO IT CAN BE USED FOR PERSONAL ACCOUNT TOO
 
 export default class myAccount extends Component {
@@ -44,7 +45,12 @@ export default class myAccount extends Component {
         //     .catch(err=> console.log(err))
     }
     render () {
-        // console.log(this.state.user)
+        // let displayInfo;
+        // user = this.state.user
+        //  if (user){
+        //    return  displayed = 
+        //  }
+
         return (
             <React.Fragment>
                 {/* <NavBar/> */}
@@ -61,7 +67,9 @@ export default class myAccount extends Component {
                     </div>
                 </div>
                 </div>
-               
+                <div className="foot components">
+          <p className="mb-0">© 2021 Tamunotonye Daniel, All Rights Reserved</p>
+        </div>
              
             </React.Fragment>
         );

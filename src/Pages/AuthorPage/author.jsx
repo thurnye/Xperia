@@ -55,7 +55,7 @@ export default class profile extends Component {
                 </div>
                 </div>
                
-             
+            
             </React.Fragment>
         );
     }

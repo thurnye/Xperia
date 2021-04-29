@@ -16,6 +16,7 @@ import MyAccount from './Pages/MyAccount/myAccount';
 import Author from './Pages/AuthorPage/author';
 import SinglePost from './Pages/SinglePost/singlePost'
 import NewExp from './Pages/CreatePost/createPost'
+import Auth from './Pages/AuthPage/AuthPage'
 import Posts from './Pages/Result/result'
 import Signup from './Pages/Signup/signup';
 import Login from './Pages/LogIn/login';
@@ -46,53 +47,85 @@ class App extends Component {
 render() {
   return (
     <React.Fragment>
-      <NavBar />
-      <SubNav/>
-        <Switch>
-          <Route path="/"  exact component={Home} />
-          {/* <Route path="/register" component={Signup} /> */}
+    <NavBar />
+    <SubNav/>
+      <Switch>
 
-          <Route path="/register" render={(props) => (
-              <Signup {...props} setUserInState={this.setUserInState}/>
-            )}/>
-          <Route path="/account/login" render={(props) => (
-              <Login {...props} setUserInState={this.setUserInState}/>
-            )}/>
+        <Route path="/" exact render={(props) => (
+            <Home {...props} setUserInState={this.setUserInState}/>
+          )}/>
+        <Route path="/register" render={(props) => (
+            <Signup {...props} setUserInState={this.setUserInState}/>
+          )}/>
+        <Route path="/account/login" render={(props) => (
+            <Login {...props} setUserInState={this.setUserInState}/>
+          )}/>
 
-          <Route path="/posts" render={(props) => (
-              <Posts {...props} loggedInUser={this.state.user}/>
-            )}/>
-          <Route path="/myaccount" render={() => (
-              <MyAccount  loggedInUser={this.state.user} />
-            )}/>
+        <Route path="/posts" render={(props) => (
+            <Posts {...props} loggedInUser={this.state.user}/>
+          )}/>
+        <Route path="/myaccount" render={(props) => (
+            <MyAccount {...props} loggedInUser={this.state.user} />
+          )}/>
 
-          <Route path="/account/author" render={(props) => (
-              <Author {...props} loggedInUserId={this.state.user} />
-            )}/>
-          <Route path="/experience/create" render={(props) => (
-              <NewExp {...props} loggedInUserId={this.state.user}/>
-            )}/>
-            <Route path="/settings" render={(props) => (
-              <Update  loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
-            )}/>
+        <Route path="/account/author" render={(props) => (
+            <Author {...props} loggedInUserId={this.state.user} />
+          )}/>
+        <Route path="/experience/create" render={(props) => (
+            <NewExp {...props} loggedInUserId={this.state.user}/>
+          )}/>
+          <Route path="/settings" render={(props) => (
+            <Update  loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
+          )}/>
 
-          <Route path="/post" render={(props) => (
-              <SinglePost {...props} userId={this.state.user}/>
-            )}/>
-          
-
-
-
-
-
-
-
-          {/* <Route path="/login" component={Login} />        */}
-          {/* <Route path="/findbyid/" component={FindById} />        */}
-        </Switch>
-    </React.Fragment>
-    
+        <Route path="/post" render={(props) => (
+            <SinglePost {...props} userId={this.state.user}/>
+          )}/>
+      </Switch>
+  </React.Fragment>
   )
 }
 }
 export default App;
+
+
+// <React.Fragment>
+//       <NavBar />
+//       <SubNav/>
+//       <Route path="/"  exact component={Home} />
+//       { this.state.user ? 
+//         <Switch>
+//           {/* <Route path="/register" component={Signup} /> */}
+
+//           <Route path="/register" render={(props) => (
+//               <Signup {...props} setUserInState={this.setUserInState}/>
+//             )}/>
+//           <Route path="/account/login" render={(props) => (
+//               <Login {...props} setUserInState={this.setUserInState}/>
+//             )}/>
+
+//           <Route path="/posts" render={(props) => (
+//               <Posts {...props} loggedInUser={this.state.user}/>
+//             )}/>
+//           <Route path="/myaccount" render={() => (
+//               <MyAccount  loggedInUser={this.state.user} />
+//             )}/>
+
+//           <Route path="/account/author" render={(props) => (
+//               <Author {...props} loggedInUserId={this.state.user} />
+//             )}/>
+//           <Route path="/experience/create" render={(props) => (
+//               <NewExp {...props} loggedInUserId={this.state.user}/>
+//             )}/>
+//             <Route path="/settings" render={(props) => (
+//               <Update  loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
+//             )}/>
+
+//           <Route path="/post" render={(props) => (
+//               <SinglePost {...props} userId={this.state.user}/>
+//             )}/>
+//         </Switch>
+//         :
+//         <AuthPage setUserInState={this.setUserInState}/>
+//         </React.Fragment>
+//     </React.Fragment>
