@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link } from 'react-router-dom';
 import './myContent.css'
-
+import services from '../../components/util/services'
 
 
 
@@ -24,6 +24,17 @@ class myPost extends Component {
            })
     }
   }
+
+
+    //DELETE A Post
+    deletePost = (postId) => {
+      console.log(postId)
+      services.removePost(postId)
+      .then(result => {
+              // this.props.history.push('/')
+          })
+          .catch(err=> console.log(err))
+  }
   
   render () {
     const myPost = this.state.myPost
@@ -35,8 +46,9 @@ class myPost extends Component {
             {
               myPost ?  
               myPost.map(el => {
+                console.log(el)
                 return (
-                  <div class="item card" key={el._id}>
+                  <div class="item card myPost" key={el._id}>
                   <img src="https://mdbootstrap.com/img/Photos/Others/food3.jpg"   style= {{width: "150px"}}alt=""/>
                   <div class="place">
                     <div className="preview-info">
@@ -45,8 +57,6 @@ class myPost extends Component {
                         search: `?title=${this.state.user.name}`,
                         state: {postId: el.trip._id},
                         hash: this.state.user._id,
-      
-      
                          }} className="btn"> 
                         <p><small className="text-mute"><i>{el.trip.city}</i></small></p>
                         <h5><small className="text-mute">{el.trip.country}</small></h5>
@@ -54,6 +64,35 @@ class myPost extends Component {
                     </div>
                     
                 </div>
+                <div>
+                  <div className="post-action">
+                  <a href="" class="badge badge-secondary">Edit</a>
+                  {/* <!-- Button trigger modal --> */}
+                  <a href="delete-post"  class="badge badge-danger" data-toggle="modal" data-target="#exampleModalCenter">Del</a></div>
+                {/* <!-- Modal --> */}
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-muted" id="exampleModalLongTitle">{el.trip.title}</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <h5><i>Are you sure you want to delete this post?</i></h5>
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel"/>
+                        <button type="submit" class="btn btn-danger " data-dismiss="modal" 
+                        onClick={()=>this.deletePost(el.trip._id)}>Confirm Delete </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                
                 </div>
                 )
               })

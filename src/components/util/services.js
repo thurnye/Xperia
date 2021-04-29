@@ -40,6 +40,10 @@ class StuffDataService {
   postEdit(id, data) {
     return http.post(`/edit/${id}`, data);
   }
+// removePost
+  removePost(id) {
+    return http.post(`/api/removePost/${id}`);
+  }
 
   remove(id) {
     return http.post(`/api/${id}`);

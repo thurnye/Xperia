@@ -33,8 +33,8 @@ router.get('/api/user/:id', Controller.getUserByID);
 //post the edited user
 router.post('/edit/:id', Controller.postEdit);
 
-//post delete
-router.post('/api/:id', Controller.postDelete);
+//delete a particular post
+router.post('/api/removePost/:id', Controller.postDeleteAPost);
 
 
 

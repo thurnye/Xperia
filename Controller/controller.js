@@ -133,7 +133,7 @@ const getPostsPage = async(req, res, next) => {
 //RETRIVE A Post BY ID
 const getAPostByID = (req, res, next) => {
     const postId = req.params.id;
-    console.log(postId)
+    // console.log(postId)
     Post.findById(postId)
     .populate({
         path: 'comments.comment',
@@ -145,7 +145,7 @@ const getAPostByID = (req, res, next) => {
     })
     .exec()
     .then(post => {
-        console.log(post)
+        // console.log(post)
         User.findById(post.author)
         .populate({
             path: 'post.trip',
@@ -159,7 +159,7 @@ const getAPostByID = (req, res, next) => {
         })
         .exec()
         .then(author => {
-            console.log(author)
+            // console.log(author)
             res.send({author, post})
         })
 
@@ -172,7 +172,6 @@ const getAPostByID = (req, res, next) => {
 // //RETRIVE A user BY ID
 const getUserByID = (req, res, next) => {
     const authorId = req.params.id;
-    console.log(authorId)
     User.findById(authorId)
     .populate({
         path: 'post.trip',
@@ -186,7 +185,7 @@ const getUserByID = (req, res, next) => {
     })
     .exec()
     .then(user => {
-        console.log(user)
+        // console.log(user)
         res.send({user})
     })
     .catch(err => res.status(400).json(err))
@@ -224,15 +223,39 @@ const postEdit = (req, res, next) => {
 }
 
 //DELETING A USER
-const postDelete = async (req, res, next) => {
-    const id = req.params.id;
-    console.log(id)
-    await User.findByIdAndDelete(id)
-    .then(result => {
-        console.log(result)
-          res.status(200).json(result)
-      })
-    .catch(err => res.status(400).json(err))
+const postDeleteAPost = async (req, res, next) => {
+    // try{ 
+    const postId = req.params.id;
+    let authorId = ''
+
+    const post =  await Post.findById(postId)
+
+    authorId = post.author._id
+    
+
+    // delete Poost from author account
+    const author = await User.findById(authorId)
+    const allPost = author.post
+
+    console.log(allPost)
+    for(let i=0; i < allPost.length; i++){
+        console.log(allPost[i])
+        if(allPost[i].trip._id.toString() === postId.toString()){
+        //    remove the post in user acct
+            allPost.splice(i, 1)
+            author.save()
+            // delete the post 
+            post.remove()
+            res.status(200)
+        }
+    }
+
+    // .then(result => {
+    //     console.log(result)
+    //       res.status(200).json(result)
+    //   })
+    // .catch(err => res.status(400).json(err))
+    // } catch(err => res.status(400).json(err))
 }
 
 module.exports = {
@@ -244,5 +267,5 @@ module.exports = {
     getUserByID,
     getAPostByID,
     postEdit, 
-    postDelete
+    postDeleteAPost
 }
