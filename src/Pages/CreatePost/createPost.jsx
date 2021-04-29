@@ -48,7 +48,7 @@ class newExp extends Component {
         services.createExperience(newExp)
         .then(res => {
           console.log(res)
-        //   this.props.history.push(`/`)
+          this.props.history.push(`/myaccount`)
         })
         .catch(e => {
           console.log(e);
