@@ -45,6 +45,11 @@ class StuffDataService {
     return http.post(`/api/removePost/${id}`);
   }
 
+  // delete User
+  deleteUser(id) {
+    return http.post(`/api/deleteUser/${id}`);
+  }
+
   remove(id) {
     return http.post(`/api/${id}`);
   }

@@ -77,7 +77,6 @@ render() {
           <Route path="/settings" render={(props) => (
             <Update  loggedInUserId={this.state.user} {...props} setUserInState={this.setUserInState}/>
           )}/>
-
         <Route path="/post" render={(props) => (
             <SinglePost {...props} userId={this.state.user}/>
           )}/>

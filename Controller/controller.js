@@ -258,6 +258,29 @@ const postDeleteAPost = async (req, res, next) => {
     // } catch(err => res.status(400).json(err))
 }
 
+
+// delete controller
+const postDeleteAUser = async (req, res, next) => {
+    try{ 
+    const userId = req.params.id;
+    console.log(userId)
+    // // find the user //
+    const user = await User.findById(userId)
+    user.deleteOne()
+
+    //find all post where authorId ===== userId
+        const PostDel= await Post.deleteMany({
+            'author': userId
+        })
+        console.log(PostDel)
+    res.status(200).json()
+    }catch(err) {
+        console.log(err)
+        res.status(400).json(err);
+      }
+
+}
+
 module.exports = {
     postCreateUser,
     getLogIn,
@@ -267,5 +290,6 @@ module.exports = {
     getUserByID,
     getAPostByID,
     postEdit, 
-    postDeleteAPost
+    postDeleteAPost,
+    postDeleteAUser
 }

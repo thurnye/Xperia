@@ -1,0 +1,67 @@
+
+delete controller
+const postDeleteAUser = async (req, res, next) => {
+    try{ 
+    const userId = req.params.id;
+    console.log(userId)
+    // find the user //
+    const user = await User.findById(userId)
+    user.deleteOne()
+
+    //find all post where authorId ===== userId
+        const PostDel= await Post.deleteMany({
+            'author': userId
+        })
+        console.log(PostDel)
+    res.status(200).json()
+    }catch(err) {
+        console.log(err)
+        res.status(400).json(err);
+      }
+
+
+
+      delete.... in the settings
+      {/* Delete My Account */}
+                    <div>
+                  <div className="post-action">
+                    {/* <!-- Button trigger modal --> */}
+                    <button  class=" btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter" style={{    width: '-webkit-fill-available'}}>Delete My Account</button>
+                  </div>
+                {/* <!-- Modal --> */}
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-muted" id="exampleModalLongTitle">{}</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <h5><i>Are you sure you want to delete this post?</i></h5>
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel"/>
+                        <button type="submit" class="btn btn-danger " data-dismiss="modal" 
+                        onClick={()=>this.deleteAccount()}>Confirm Delete </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            delet function
+            //DELETE My Account
+    deleteAccount = () => {
+      console.log(this.state.id)
+      services.deleteUser(this.state.id)
+      .then(result => {
+        console.log(result.data)
+        // remove the token from local storage
+        localStorage.removeItem('token') 
+        this.props.history.push('/register')
+      })
+  }
