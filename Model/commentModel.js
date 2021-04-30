@@ -17,7 +17,6 @@ const commentsSchema = new Schema({
         required: true,
         ref: 'Posts'
     },
-    
 },
 {
     timestamps: true

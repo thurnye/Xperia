@@ -16,20 +16,16 @@ Have you wanted to travel to a city and dont really know what the experience wou
 
 <img src="./src/Public/Image/screenshot1.png" alt="screenshot" max-width= "200">
 <img src="./src/Public/Image/screenshot2.png" alt="screenshot" max-width= "200">
-### `npm install`
-### `npm start`
+
+
+
+To run local
+### `add a .env file in the root repo and added your database connection string`
+### `npm i`
+### `npm start
+
+
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000] for th client side
-(http://localhost:8000) for the server side
+[Delpoyed Site](https://x-peria-app.herokuapp.com/) for more information.
 
-To connect to the database - MongoDB
-add a .env file in the root repo and added your database connection string
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
- if to send to production

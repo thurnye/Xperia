@@ -17,7 +17,6 @@ const footer = () => {
                 </div>
                     
                 </div>
-                {/* <SocialMedia/> */}
                 
                 <div className="col-md-4">
                     <h6><span className="text-muted"> Follow us</span></h6>
