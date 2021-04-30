@@ -28,5 +28,5 @@ To run local
 
 
 Runs the app in the development mode.<br />
-[Delpoyed Site](https://x-peria-app.herokuapp.com/) for more information.
+[Click Here To Visit Site](https://x-peria-app.herokuapp.com/)
 
