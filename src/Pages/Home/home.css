@@ -6,7 +6,7 @@
 a{
     color: black
 }
-.home .jumbotron {
+.home .homeJumbo  {
     border-radius: 0;
     text-align: center;
     height: 40vh;
@@ -15,16 +15,16 @@ a{
     align-items: center;
     color: cornsilk;
     background-image: url("../../Public//Image/jumbotron.jpeg"); /* The image used */
-  background-color: #cccccc; /* Used if the image is unavailable */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 
 }
 .home h3{
     font-size: 40px;
 }
-.home .jumbotron .container {
+.home .homeJumbo .container {
     background-color: #08010759;
     min-height: -webkit-fill-available;
     display: flex;
@@ -32,17 +32,20 @@ a{
     justify-content: center;
     align-items: center;
 }
+.home .googleMapOfLocation img{
+    width: 600px;
+}
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    .home .jumbotron {
+    .home .homeJumbo  {
         height: 60vh;
     }
  }
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) { 
-    .home .jumbotron {
+    .home .homeJumbo {
        
         height: 60vh;
     }

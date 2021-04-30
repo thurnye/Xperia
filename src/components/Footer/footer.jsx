@@ -1,6 +1,8 @@
 import React from 'react';
 import SocialMedia from '../SocialMedia/socialMedia'
 import './footer.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import world from '../../Public/Image/continent.png'
 
 const footer = () => {
     return (
@@ -10,8 +12,7 @@ const footer = () => {
                 <h6><span className="text-muted">Where we are</span></h6>
                 <div className="container">
                     <div className="googleMapOfLocation" style={{height: '20vh'}}>
-
-                    This will be the google map pointing to the location of the placce
+                        <img src={world} alt="" srcset=""/>
                     </div>
                 </div>
                     

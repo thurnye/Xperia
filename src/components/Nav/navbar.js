@@ -27,7 +27,6 @@ const navbar = () => {
                         <Nav.Link href="/posts">All Posts</Nav.Link>
                         <Nav.Link href="/register">SignUp</Nav.Link>
                         <Nav.Link href="/account/login">Login</Nav.Link>
-                        <Nav.Link href="/settings">Settings</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>   

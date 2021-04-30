@@ -13,7 +13,7 @@ const home = () => {
     return (
         <React.Fragment>
             <div className="home"> 
-            <div class="jumbotron jumbotron-fluid" >
+            <div class="jumbotron jumbotron-fluid homeJumbo" >
                 <div class="container">
                     <h3 class="">Your Trip Starts Here!</h3>
                     <p class="lead"><small><i>what have we to say about your next big trip...</i></small></p>
