@@ -69,7 +69,7 @@ const postCreatePost = async (req, res, next) => {
         country: req.body.country,
         tags: [req.body.tags],
         story: req.body.story,
-        images:req.body.images
+        images:[req.body.images]
 
     })
     newPost.save().then((resp) => {
@@ -235,9 +235,7 @@ const postEditPost = (req, res, next) => {
         post.country= req.body.country
         post.tags[0]= [req.body.tags]
         post.story= req.body.story
-        post.images=req.body.image
-
-
+        post.images=[req.body.image]
         return post.save()
     })
     .then((post) => {
@@ -245,9 +243,6 @@ const postEditPost = (req, res, next) => {
     })
     .catch(err => res.status(400).json(err));
 }
-
-
-
 
 //DELETING A USER
 const postDeleteAPost = async (req, res, next) => {
