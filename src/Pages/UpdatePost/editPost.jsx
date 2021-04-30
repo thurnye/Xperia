@@ -8,29 +8,17 @@ class editPost extends Component {
         city: '',
         country: '',
         story: '',
-        tags: [],
+        tags: null,
         images: [],
     };
   
   
     onChange = (e) => {
-        // current array of tags
-        const tags = this.state.tags
-        let index
-        if (e.target.checked) {
-            // add the value of the checkbox to tags array
-            tags.push(e.target.value)
-        } else {
-            // or remove the value from the unchecked checkbox from the array
-            index = tags.indexOf(e.target.value)
-            tags.splice(index, 1)
-        }
-        // update the state with the new array of tags
-        // this.setState({ tags: tags })
-        this.setState({ [e.target.name]: e.target.value, tags: tags  });
+        console.log([e.target.name], e.target.value)
+        this.setState({ [e.target.name]: e.target.value });
+
     }
     pushtags = (e) => {
-        console.log(e.target.value)
         // current array of tags
         const tags = this.state.tags
         let index
@@ -60,13 +48,16 @@ class editPost extends Component {
         services.findById(prodId)
         .then(pst => {
             const post  = pst.data.post
+                console.log(post.tags[0][0])
             this.setState({
                 title: post.title,
                 city: post.city,
                 country: post.country,
                 story: post.story,
+                tags: post.tags[0]
 
             })
+            
         })
       }
       
@@ -87,7 +78,7 @@ class editPost extends Component {
             images: this.state.images
         }
         console.log(id ,editPost)
-        services.updatePost(id,editPost)
+        services.updatePost(id, editPost)
         .then(res => {
           console.log(res)
           this.props.history.push(`/myaccount`)
@@ -166,7 +157,11 @@ class editPost extends Component {
                                     type="checkbox"
                                     name="beaches" 
                                     id="inlineCheckbox2"
-                                    // {this.state.tags.includes('beaches') ? checked : unchecked }
+                                   checked= {
+                                    tag ? tag.includes('beaches') ? true : false : false
+
+                                    }
+                                    // checked = { tag.includes('beaches') ? true : false}
                                     value="Beaches"/>
                                     <label class="form-check-label" for="inlineCheckbox2">Beaches</label>
                                 </div>
