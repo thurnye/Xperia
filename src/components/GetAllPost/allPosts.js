@@ -10,11 +10,9 @@ export default class displayUsers extends Component {
     } 
 
     componentDidMount() {
-        console.log('component')
         //DISPLAY ALL Posts
         services.find()
         .then(result => {
-            console.log(result)
             this.setState({
                 data: result.data.posts
             })
@@ -28,8 +26,7 @@ export default class displayUsers extends Component {
        const Inventory =  this.state.data.map((post)=> {
             return (
                 <React.Fragment>
-                    {/* <h6>{this.props.location.state}</h6> */}
-                <div class="card" key={post._id}>
+                <div class="card" key={post._id} style={{width: '500px'}}>
                         <img src="" class="card-img-top" alt="anImage"/>
                         <div class="card-body">
                         <h5 class="card-title">{post.title} </h5>

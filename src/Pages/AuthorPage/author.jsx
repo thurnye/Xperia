@@ -3,6 +3,7 @@ import './author.css'
 import AuthorInfo from '../../components/AuthorProfile/authorProfile'
 import AuthorContents from '../../components/AuthorContents/authorContents'
 import services from '../../components/util/services'
+import JumbotronImg from '../../Public/Image/atlas.png'
 
 
 // THIS IS A VISITED USER ACCOUNT AND ALSO IT CAN BE USED FOR PERSONAL ACCOUNT TOO
@@ -27,21 +28,16 @@ export default class profile extends Component {
         .catch(err => console.log(err));
     }
     
-    //DELETE A USER
-    deleteUser = async() => {
-    //     const id = this.props.location.state;
-    //    await services.remove(id)
-    //    .then(result => {
-    //         // this.props.history.push('/')
-    //     })
-    //     .catch(err=> console.log(err))
-    }
+   
     render () {
         return (
             <React.Fragment>
-                {/* <NavBar/> */}
-                
-                <div className="container">
+                <div className="container account">
+                    <div class="jumbotron container jumbotron-fluid" style={{backgroundImage: `url(${JumbotronImg})`}}>
+                        <div class="container">
+                            <h1 class="display-4"></h1>
+                        </div>
+                    </div>
                 <div class="card mb-3" >
                     <div class="row">
                         <div class="col-md-4 container userInfo">
