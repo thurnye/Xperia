@@ -45,11 +45,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(route);
 
 
-
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(PORT, () => {
 console.log(`Server started on port ${PORT}`);
-});
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
