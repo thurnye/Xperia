@@ -7,7 +7,7 @@ const commentsSchema = new Schema({
         type: String,
         require: true
     },
-    userId: { //change userId to commenterId
+    userId: { 
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'User'
