@@ -37,9 +37,15 @@ class StuffDataService {
     return http.get(`/edit/${id}`);
   }
 
+  // edit a particular user
   postEdit(id, data) {
     return http.post(`/edit/${id}`, data);
   }
+  // edit a particular post
+  updatePost(id, data) {
+    return http.post(`/edit/post/${id}`, data);
+  }
+
 // removePost
   removePost(id) {
     return http.post(`/api/removePost/${id}`);

@@ -20,6 +20,7 @@ router.get('/api/:id', Controller.getAPostByID);
 // POST /api/users/login
 router.post('/api/user/login', Controller.getLogIn);
 
+
 //getting an author or loggedIn User account by id
 router.get('/api/user/:id', Controller.getUserByID);
 
@@ -32,6 +33,9 @@ router.get('/api/user/:id', Controller.getUserByID);
 
 //post the edited user
 router.post('/edit/:id', Controller.postEdit);
+
+//post the edited user
+router.post('/edit/post/:id', Controller.postEditPost);
 
 //delete a particular post
 router.post('/api/removePost/:id', Controller.postDeleteAPost);

@@ -8,7 +8,9 @@
 
 .sub-nav ul li {
     margin-right: 20px;
-
     list-style: none;
     margin-bottom: 10px;
+}
+.sub-nav ul li a:hover{
+   border-bottom: 2px solid red;
 }

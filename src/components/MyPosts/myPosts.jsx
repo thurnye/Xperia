@@ -66,7 +66,13 @@ class myPost extends Component {
                 </div>
                 <div>
                   <div className="post-action">
-                  <a href="" class="badge badge-secondary">Edit</a>
+                  <Link to={{
+                         pathname: `/edit/post/${el.trip._id}`,
+                        search: `?update=true`,
+                        state: {postId: el.trip._id},
+                        hash: this.state.user._id,
+                         }} className="badge badge-secondary">EDIT
+                    </Link>
                   {/* <!-- Button trigger modal --> */}
                   <a href="delete-post"  class="badge badge-danger" data-toggle="modal" data-target="#exampleModalCenter">Del</a></div>
                 {/* <!-- Modal --> */}
