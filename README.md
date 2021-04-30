@@ -14,8 +14,8 @@ Have you wanted to travel to a city and dont really know what the experience wou
 | FontAwesome | Icons |
 
 
-<img src="./src/Public/Image/screenshot1.png" alt="screenshot" max-width= "200">
-<img src="./src/Public/Image/screenshot2.png" alt="screenshot" max-width= "200">
+<img src="./src/Public/Image/screenshot1.png" alt="screenshot" max-width= "200px">
+<img src="./src/Public/Image/screenshot2.png" alt="screenshot" max-width= "200px">
 
 
 
