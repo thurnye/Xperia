@@ -2,6 +2,8 @@ import React from 'react';
 import PeruImg from '../../Public/Image/destination-peru-single1.jpeg'
 import Peru2 from '../../Public/Image/peru2.jpeg'
 import Peru3 from '../../Public/Image/peru3.jpeg'
+// import PeruMap from '../../Public/Image/peruMap.png'
+// import SwedenMap from '../../Public/Image/swedenMap.png'
 import './destination.css'
 
 const destination = () => {
