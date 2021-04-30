@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import MultipleFile from '../../components/FileUpload/Multiple/multipleFileUpload'
-import './newPost.css'
 import services from '../../components/util/services'
 
-class newExp extends Component {
+class editPost extends Component {
     state = {
         title: '',
         city: '',
         country: '',
         story: '',
-        tags: [],
+        tags: null,
         images: [],
     };
   
   
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value  });
+        console.log([e.target.name], e.target.value)
+        this.setState({ [e.target.name]: e.target.value });
+
     }
     pushtags = (e) => {
-        console.log(e.target.value)
         // current array of tags
         const tags = this.state.tags
         let index
@@ -40,13 +40,36 @@ class newExp extends Component {
         // // update the state with the new array of tags
         // // this.setState({ tags: tags })
     }
+    componentDidMount(prevProps) {
+        // find the post
+
+        const prodId = this.props.location.state.postId
+
+        services.findById(prodId)
+        .then(pst => {
+            const post  = pst.data.post
+                console.log(post.tags[0][0])
+            this.setState({
+                title: post.title,
+                city: post.city,
+                country: post.country,
+                story: post.story,
+                tags: post.tags[0]
+
+            })
+            
+        })
+      }
+      
+
+    
       
     onSubmit = async (e) => {
         e.preventDefault();
         
         console.log(this.state.tags)
-        const newExp = {
-            userId: this.props.location.state,
+        const id =  this.props.location.state.postId
+        const editPost = {
             title: this.state.title,
             city: this.state.city,
             country: this.state.country,
@@ -54,8 +77,8 @@ class newExp extends Component {
             tags: this.state.tags,
             images: this.state.images
         }
-        console.log(newExp)
-        services.createExperience(newExp)
+        console.log(id ,editPost)
+        services.updatePost(id, editPost)
         .then(res => {
           console.log(res)
           this.props.history.push(`/myaccount`)
@@ -66,10 +89,12 @@ class newExp extends Component {
     }
 
     render() {
+        const tag = this.state.tags
+        console.log(tag)
         return (
             <React.Fragment>
                 {/* <NavBar /> */}
-                <div className="container newExp"> 
+                <div className="container editPost"> 
             
                     <form noValidate onSubmit={this.onSubmit}>
                         <div className="form">
@@ -82,7 +107,7 @@ class newExp extends Component {
                                 name="title" 
                                 aria-label="title" 
                                 aria-describedby="basic-addon1" 
-                                // value={this.state.comment} 
+                                value={this.state.title} 
                                 onChange={this.onChange}/>
                             </div>
 
@@ -95,7 +120,7 @@ class newExp extends Component {
                                 name="city" 
                                 aria-label="trip-city" 
                                 aria-describedby="basic-addon2" 
-                                // value={this.state.comment} 
+                                value={this.state.city} 
                                 onChange={this.onChange}/>
                             </div>
 
@@ -107,7 +132,7 @@ class newExp extends Component {
                                 id="basic-url"
                                 name="country" 
                                 aria-describedby="basic-addon3" 
-                                // value={this.state.comment} 
+                                value={this.state.country} 
                                 onChange={this.onChange}/>
                             </div>
 
@@ -132,6 +157,11 @@ class newExp extends Component {
                                     type="checkbox"
                                     name="beaches" 
                                     id="inlineCheckbox2"
+                                   checked= {
+                                    tag ? tag.includes('beaches') ? true : false : false
+
+                                    }
+                                    // checked = { tag.includes('beaches') ? true : false}
                                     value="Beaches"/>
                                     <label class="form-check-label" for="inlineCheckbox2">Beaches</label>
                                 </div>
@@ -192,12 +222,15 @@ class newExp extends Component {
                                 <textarea class="form-control exp-story"
                                 name="story" 
                                 aria-label="With textarea"
-                                // value={this.state.comment} 
+                                value={this.state.story} 
                                 onChange={this.onChange}></textarea>
                             </div>
                             <div class="input-group mb-3 dragndrop">
                                 <MultipleFile setUploadInState={this.state.images} {...this.props}/>
                             </div>
+                        </div>
+                        <div className="displayed">
+                            {/* display the images here */}
                         </div>
                         <div class="input-group-submit mb-3">
                         <button type="submit" className="btn explore">SUBMIT</button>
@@ -210,4 +243,4 @@ class newExp extends Component {
     }
 }
 
-export default newExp;
+export default editPost;

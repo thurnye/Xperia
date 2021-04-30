@@ -66,7 +66,13 @@ class myPost extends Component {
                 </div>
                 <div>
                   <div className="post-action">
-                  <a href="" class="badge badge-secondary">Edit</a>
+                  <Link to={{
+                         pathname: `/edit/post/${el.trip._id}`,
+                        search: `?update=true`,
+                        state: {postId: el.trip._id},
+                        hash: this.state.user._id,
+                         }} className="badge badge-secondary">EDIT
+                    </Link>
                   {/* <!-- Button trigger modal --> */}
                   <a href="delete-post"  class="badge badge-danger" data-toggle="modal" data-target="#exampleModalCenter">Del</a></div>
                 {/* <!-- Modal --> */}
@@ -107,19 +113,13 @@ class myPost extends Component {
        
        
        {/* This is for adding new experience */}
-        <div class="item card">
-          <img src="#"   style= {{width: "250px"}}alt=""/>
-          <div class="place">
-            <div className="preview-info">
+        <div class="addPost card">
               <Link to={{
                 pathname: `/experience/create`,
                 state: this.props.userId
                 }} className="btn"> 
-              <p><small className="text-mute"><i>Form Element</i></small></p>
-              <h5><small className="text-mute">Form</small></h5>
+                <h5><small className="text-mute">ADD POST</small></h5>
             </Link>
-            </div>
-          </div>
         </div>
       </React.Fragment>
     );

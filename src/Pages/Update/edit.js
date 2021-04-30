@@ -99,6 +99,19 @@ import Avatar from '../../Public/Image/avatar.png'
   }
 
 
+  //DELETE My Account
+  deleteAccount = () => {
+    console.log(this.state.id)
+    services.deleteUser(this.state.id)
+    .then(result => {
+      console.log(result.data)
+      // remove the token from local storage
+      localStorage.removeItem('token') 
+      this.props.history.push('/register')
+    })
+}
+
+
   render() { 
     // console.log(this.props)
     return (
@@ -128,7 +141,66 @@ import Avatar from '../../Public/Image/avatar.png'
                   <p class="card-text"></p>
 
                 </div>
+
+
+
+
+      {/* Delete My Account */}
+                    <div>
+                  <div className="post-action">
+                    {/* <!-- Button trigger modal --> */}
+                    <button  class=" btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter" style={{    width: '-webkit-fill-available'}}>Delete My Account</button>
+                  </div>
+                {/* <!-- Modal --> */}
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-muted" id="exampleModalLongTitle">{}</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                      <h5><i>Are you sure you want to delete your account?</i></h5>
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel"/>
+                        <button type="submit" class="btn btn-danger " data-dismiss="modal" 
+                        onClick={()=>this.deleteAccount()}>Confirm Delete </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
               <div class="col-md-8 components">
                 <div class="container editForm">

@@ -1,0 +1,15 @@
+.account .jumbotron{
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    height: 20vh;
+    margin-bottom: 0px;
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .account .jumbotron{
+      
+        height: 36vh;
+    }
+ }

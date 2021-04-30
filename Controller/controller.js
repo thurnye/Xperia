@@ -61,14 +61,15 @@ const getLogIn = async (req, res) => {
 //Creating A Post
 const postCreatePost = async (req, res, next) => {
     const userId = req.body.userId
+    console.log(req.body.tags)
     const newPost = new Post ({
         author : userId,
         title: req.body.title,
         city: req.body.city,
         country: req.body.country,
-        tags: req.body.tags,
+        tags: [req.body.tags],
         story: req.body.story,
-        images:req.body.images
+        images:[req.body.images]
 
     })
     newPost.save().then((resp) => {
@@ -222,6 +223,27 @@ const postEdit = (req, res, next) => {
     .catch(err => res.status(400).json(err));
 }
 
+// POSTING UPDATED POST
+const postEditPost = (req, res, next) => {
+    const id = req.params.id;
+    console.log(id)
+    Post.findById(id)
+    .then(post => {
+        console.log(post)
+        post.title= req.body.title
+        post.city= req.body.city
+        post.country= req.body.country
+        post.tags[0]= [req.body.tags]
+        post.story= req.body.story
+        post.images=[req.body.image]
+        return post.save()
+    })
+    .then((post) => {
+        res.status(200).json(post)
+    })
+    .catch(err => res.status(400).json(err));
+}
+
 //DELETING A USER
 const postDeleteAPost = async (req, res, next) => {
     // try{ 
@@ -249,13 +271,29 @@ const postDeleteAPost = async (req, res, next) => {
             res.status(200)
         }
     }
+}
 
-    // .then(result => {
-    //     console.log(result)
-    //       res.status(200).json(result)
-    //   })
-    // .catch(err => res.status(400).json(err))
-    // } catch(err => res.status(400).json(err))
+
+// delete controller
+const postDeleteAUser = async (req, res, next) => {
+    try{ 
+    const userId = req.params.id;
+    console.log(userId)
+    // // find the user //
+    const user = await User.findById(userId)
+    user.deleteOne()
+
+    //find all post where authorId ===== userId
+        const PostDel= await Post.deleteMany({
+            'author': userId
+        })
+        console.log(PostDel)
+    res.status(200).json()
+    }catch(err) {
+        console.log(err)
+        res.status(400).json(err);
+      }
+
 }
 
 module.exports = {
@@ -267,5 +305,7 @@ module.exports = {
     getUserByID,
     getAPostByID,
     postEdit, 
-    postDeleteAPost
+    postEditPost,
+    postDeleteAPost,
+    postDeleteAUser
 }

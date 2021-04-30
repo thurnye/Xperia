@@ -61,8 +61,18 @@ body {
     background-color: #f7f2ed;
 }
 
-
-
+.addPost{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addPost:hover{
+    background-color: darkgray;
+    color: white;
+}
 
 
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import NavBar from '../../components/Nav/navbar';
-import './myAccount.css'
 import MyInfo from '../../components/MyInfo/myInfo'
 import MyPosts from '../../components/MyPosts/myPosts'
 import services from '../../components/util/services'
+import './myAccount.css'
+import JumbotronImg from '../../Public/Image/atlas.png'
 
 
 
@@ -21,10 +21,8 @@ export default class myAccount extends Component {
     //RETRIEVING A PARTICULAR USER
     componentDidUpdate(prevProps, prevState) {
         if (this.props.loggedInUser !== prevProps.loggedInUser) {
-            console.log(this.props.loggedInUser)
               services.findMyAccount(this.props.loggedInUser._id)
             .then(user => {
-                // console.log(user)
                 this.setState({
                     user: user.data.user,
                     userId: user.data.user._id,
@@ -34,42 +32,29 @@ export default class myAccount extends Component {
           }
     }
     
-    
-    //DELETE A USER
-    deleteUser = async() => {
-        // const id = this.props.location.state;
-        // await services.remove(id)
-        // .then(result => {
-        //         // this.props.history.push('/')
-        //     })
-        //     .catch(err=> console.log(err))
-    }
     render () {
-        // let displayInfo;
-        // user = this.state.user
-        //  if (user){
-        //    return  displayed = 
-        //  }
-
         return (
             <React.Fragment>
-                {/* <NavBar/> */}
-                
-                <div className="container">
-                <div class="card mb-3" >
-                    <div class="row">
-                        <div class="col-md-4 container userInfo">
-                            <MyInfo loggedInUser={this.state.user}/>
+                <div className="container account" >
+                    <div class="jumbotron container jumbotron-fluid" style={{backgroundImage: `url(${JumbotronImg})`}}>
+                        <div class="container">
+                            <h1 class="display-4"></h1>
                         </div>
-                        <div class="col-md-8 components">
-                            <MyPosts user={this.state.user}  userId={this.state.userId}/>
+                    </div>
+                    <div class="card mb-3" >
+                        <div class="row">
+                            <div class="col-md-4 container userInfo">
+                                <MyInfo loggedInUser={this.state.user}/>
+                            </div>
+                            <div class="col-md-8 components">
+                                <MyPosts user={this.state.user}  userId={this.state.userId}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
                 <div className="foot components">
-          <p className="mb-0">© 2021 Tamunotonye Daniel, All Rights Reserved</p>
-        </div>
+                    <p className="mb-0">© 2021 Tamunotonye Daniel, All Rights Reserved</p>
+                </div>
              
             </React.Fragment>
         );

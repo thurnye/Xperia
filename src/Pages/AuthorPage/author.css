@@ -6,7 +6,7 @@
     height: 160px;
     width: 160px;
     border-radius: 50%;
-    border: 4px dotted red;
+    border: 4px dotted #c3c2c2;
 }
  /* X-Small devices (portrait phones, less than 576px) */
  /* No media query for `xs` since this is the default in Bootstrap */
@@ -19,7 +19,7 @@
  /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
     .userInfo{
-        border-right: 2px dotted red;
+        border-right: 2px solid #c3c2c2;
     }
  }
 

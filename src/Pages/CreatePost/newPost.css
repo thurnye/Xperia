@@ -7,3 +7,13 @@
     justify-content: center;
     align-items: center;
 }
+.dragndrop{
+    border: 2px solid #4c585fdb;
+    text-align: center;
+    font-size: 15px;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e6e6;
+}

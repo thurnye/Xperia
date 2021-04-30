@@ -17,7 +17,8 @@ const postsSchema = new Schema({
         require: true
     },
     tags: [{
-        type: Object, required: true
+        type: Object, 
+        required: true
     }],
     story: {
         type: String,

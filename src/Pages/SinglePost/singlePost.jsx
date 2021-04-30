@@ -41,8 +41,11 @@ class singlePost extends Component {
         return (
             <React.Fragment>
                 {/* <NavBar/> */}
+                <div className="" style={{marginLeft: "10px"}}>
                 <h2>Xperia</h2>
-                <p><small className="text-mute">User Slogan</small></p>
+                <p style={{marginTop: "-20px"}}><small className="text-muted"><i>Tales of a journey...</i></small></p>
+                </div>
+                
                 <div className="container">
                 <div className=" mb-3" >
                     <div className="row">
