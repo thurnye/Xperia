@@ -73,7 +73,6 @@ const postCreatePost = async (req, res, next) => {
 
     })
     newPost.save().then((resp) => {
-        // console.log(result)
         const postId = {trip: resp._id}
         User.findById(userId)
         .then(user => {
