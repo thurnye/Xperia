@@ -17,6 +17,10 @@ Have you wanted to travel to a city and dont really know what the experience wou
 <img src="./src/Public/Image/screenshot1.png" alt="screenshot" max-width='200'>
 <img src="./src/Public/Image/screenshot2.png" alt="screenshot" max-width= "200px">
 
+## Screens
+<img src="./src/Public/Image/screenshot1.png?raw=true" width="35%"> 
+<img src="./src/Public/Image/screenshot2.png?raw=true" width="35%">
+
 
 
 To run local
