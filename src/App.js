@@ -17,8 +17,15 @@ import Signup from './Pages/Signup/signup';
 import Login from './Pages/LogIn/login';
 import jwt_decode from "jwt-decode";
 import EditPost from './Pages/UpdatePost/editPost'
-// import FindById from './components/findbyId/findbyId';
 import Update from './Pages/Update/edit'
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab)
 
 
 class App extends Component {
@@ -44,7 +51,7 @@ render() {
   return (
     <React.Fragment>
     <NavBar />
-    <SubNav/>
+    {/* <SubNav/> */}
       <Switch>
 
         <Route path="/" exact render={(props) => (

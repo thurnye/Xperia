@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './authorProfile.css'
 import Avatar from '../../Public/Image/avatar.png'
 import {Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
@@ -59,22 +59,34 @@ class authorProfile extends Component {
                         <div className="container">
                             <div className="row g-0 justify-content-md-center">
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].facebook}</span>
+                                    <a href={author.socialMedia[0].facebook} className="icon">
+                                    <FontAwesomeIcon icon={['fab', 'facebook']} />                                   
+                                    </a>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].instagram}</span>
+                                    <a href={author.socialMedia[0].instagram} className="icon">
+                                    <FontAwesomeIcon icon={['fab', 'instagram']} />                                   
+                                    </a>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].twitter}</span>
+                                    <a href={author.socialMedia[0].twitter} className="icon">
+                                    <FontAwesomeIcon icon={['fab', 'twitter']} />                                    
+                                    </a>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].pinterest}</span>
+                                    <a href={author.socialMedia[0].pinterest} className="icon">
+                                    <FontAwesomeIcon icon={['fab', 'pinterest']} />                                   
+                                    </a>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].youtube}</span>
+                                    <a href={author.socialMedia[0].youtube} className="icon">
+                                    <FontAwesomeIcon icon={['fab', 'youtube']} />                                    
+                                    </a>
                                 </div>
                                 <div class="col col-lg-2">
-                                    <span className="icon">{author.socialMedia[0].rss}</span>
+                                    <a href={author.socialMedia[0].rss} className="icon">
+                                        <FontAwesomeIcon icon={['fas', 'instagram']} />                                    
+                                    </a>
                                 </div>
                             </div>
                         </div>
