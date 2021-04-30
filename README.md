@@ -16,7 +16,7 @@ Have you wanted to travel to a city and dont really know what the experience wou
 
 ## Screens
 
-| <img src="./src/Public/Image/screenshot1.png?raw=true" width= "200px" height="300px"> |<img src="./src/Public/Image/screenshot2.png?raw=true" width= "200px" height="300px">|
+| <img src="./src/Public/Image/screenshot1.png?raw=true" width= "300px" height="300px"> |<img src="./src/Public/Image/screenshot2.png?raw=true" width= "300px" height="300px">|
 
 
 
