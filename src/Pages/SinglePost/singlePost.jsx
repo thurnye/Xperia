@@ -30,7 +30,6 @@ class singlePost extends Component {
                 post: result.data.post,
                 author: result.data.author
             })
-            // console.log(this.state.post.author)
         })
         .catch( err=> console.log(err))
     }
