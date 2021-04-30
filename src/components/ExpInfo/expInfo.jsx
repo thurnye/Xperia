@@ -6,6 +6,7 @@ import sales from '../../Public/Image/sales.jpeg'
 import services from '../util/services'
 import './expInfo.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import world from '../../Public/Image/continent.png'
 
 
 
@@ -36,7 +37,7 @@ const ExpInfo = (props) => {
                     <h6><span className="text-muted">Where We Are</span></h6>
                         <div className="googleMapOfLocation">
 
-                        This will be the google map pointing to the location of the placce
+                        <img src={world} alt="" srcset=""/>
                         </div>
                     </div>
                     <div className="expoInfo-media">
@@ -44,7 +45,7 @@ const ExpInfo = (props) => {
 
                         <div className="container col-md-4 media-icon">
                     <h6><span className="text-muted">Follow Us</span></h6>
-                    <div className="follow-up " style={{height: '20vh'}}> 
+                    <div className="follow-up " style={{height: '7vh'}}> 
                         <div className="container">
                             <div className="row">
                                 <div className="col">

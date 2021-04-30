@@ -16,6 +16,18 @@
     text-align: center;
     margin-bottom: 7vh;
 }
+.googleMap .googleMapOfLocation{
+    /* border: 2px dotted yellowgreen; */
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 7vh;
+}
+.googleMap img {
+    width: 375px;
+}
 .expoInfo-media .col-md-4{
     max-width: 100%;
 }

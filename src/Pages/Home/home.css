@@ -33,10 +33,15 @@ a{
     align-items: center;
 }
 .home .googleMapOfLocation img{
-    width: 600px;
+    width: 35vw;
 }
 
 /* // Medium devices (tablets, 768px and up) */
+@media (max-width: 750px) { 
+    .home .googleMapOfLocation img {
+        width: 100vw;
+    }
+ }
 @media (min-width: 768px) and (max-width: 991.98px) { 
     .home .homeJumbo  {
         height: 60vh;
