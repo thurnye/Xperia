@@ -25,24 +25,24 @@ const footer = () => {
                             <div className="container">
                                 <div className="row">
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'facebook']} style={{fontSize: "50px"}}/>                                   
+                                        <FontAwesomeIcon icon={['fab', 'facebook']} style={{fontSize: "25px"}}/>                                   
                                     </div>
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'instagram']} style={{fontSize: "50px"}}/>   
+                                        <FontAwesomeIcon icon={['fab', 'instagram']} style={{fontSize: "25px"}}/>   
                                     </div>
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'twitter']} style={{fontSize: "50px"}}/>   
+                                        <FontAwesomeIcon icon={['fab', 'twitter']} style={{fontSize: "25px"}}/>   
                                     </div>
                                 </div>
                                 <div className="row" style={{ marginTop: '2vh'}}>
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'pinterest']} style={{fontSize: "50px"}}/>   
+                                        <FontAwesomeIcon icon={['fab', 'pinterest']} style={{fontSize: "25px"}}/>   
                                     </div>
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'youtube']} style={{fontSize: "50px"}}/>   
+                                        <FontAwesomeIcon icon={['fab', 'youtube']} style={{fontSize: "25px"}}/>   
                                     </div>
                                     <div className="col">
-                                        <FontAwesomeIcon icon={['fab', 'reddit']} style={{fontSize: "50px"}}/>   
+                                        <FontAwesomeIcon icon={['fab', 'reddit']} style={{fontSize: "25px"}}/>   
                                     </div>
                                 </div>
                             </div>

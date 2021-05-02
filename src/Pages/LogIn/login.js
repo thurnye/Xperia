@@ -77,7 +77,7 @@ export default class SignUpForm extends Component {
                     </div>
 
                     <div className="getCook">  
-                      <button type="submit" className="btn">Sign Up</button>
+                      <button type="submit" className="btn">Log In</button>
                     </div>
                   </form>
 
@@ -87,18 +87,6 @@ export default class SignUpForm extends Component {
             </div>
             </section>
         </React.Fragment>
-      // <div>
-      //   <div className="form-container" onSubmit={this.handleSubmit}>
-      //     <form autoComplete="off" >
-      //       <label>Email</label>
-      //       <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required />
-      //       <label>Password</label>
-      //       <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-      //       <button type="submit">LOG IN</button>
-      //     </form>
-      //   </div>
-      //   <p className="error-message">&nbsp;{this.state.error}</p>
-      // </div>
     );
   }
 }
